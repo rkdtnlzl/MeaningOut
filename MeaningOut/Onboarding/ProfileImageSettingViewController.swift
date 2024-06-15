@@ -43,6 +43,8 @@ class ProfileImageSettingViewController: UIViewController, UICollectionViewDeleg
         profileImageView.layer.borderWidth = 5
         profileImageView.layer.borderColor = Colors.orange.cgColor
         profileImageView.clipsToBounds = true
+        let profileNumber = UserDefaults.standard.integer(forKey: "profileNumber")
+        profileImageView.image = UIImage(named: "profile_\(profileNumber)")
         
         collectionView.delegate = self
         collectionView.dataSource = self
