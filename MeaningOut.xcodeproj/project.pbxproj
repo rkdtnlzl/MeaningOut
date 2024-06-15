@@ -16,6 +16,11 @@
 		016B9CFB2C1B26A5009D2996 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 016B9CFA2C1B26A5009D2996 /* SnapKit */; };
 		016B9CFE2C1B26B1009D2996 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 016B9CFD2C1B26B1009D2996 /* Alamofire */; };
 		016B9D012C1B26CB009D2996 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 016B9D002C1B26CB009D2996 /* Kingfisher */; };
+		016B9D032C1B2965009D2996 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016B9D022C1B2965009D2996 /* Colors.swift */; };
+		016B9D052C1B2A07009D2996 /* UIColor+HexCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016B9D042C1B2A07009D2996 /* UIColor+HexCode.swift */; };
+		016B9D082C1B2B45009D2996 /* StringLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016B9D072C1B2B45009D2996 /* StringLiterals.swift */; };
+		016B9D0A2C1B2E85009D2996 /* ProfileNicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016B9D092C1B2E85009D2996 /* ProfileNicknameSettingViewController.swift */; };
+		01717FDF2C1D62EE003F060E /* ProfileImageSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01717FDE2C1D62EE003F060E /* ProfileImageSettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +32,11 @@
 		016B9CEF2C1B1E29009D2996 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		016B9CF12C1B1E29009D2996 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		016B9CF72C1B208E009D2996 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		016B9D022C1B2965009D2996 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		016B9D042C1B2A07009D2996 /* UIColor+HexCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+HexCode.swift"; sourceTree = "<group>"; };
+		016B9D072C1B2B45009D2996 /* StringLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiterals.swift; sourceTree = "<group>"; };
+		016B9D092C1B2E85009D2996 /* ProfileNicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNicknameSettingViewController.swift; sourceTree = "<group>"; };
+		01717FDE2C1D62EE003F060E /* ProfileImageSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageSettingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,11 +76,24 @@
 				016B9CE32C1B1E27009D2996 /* AppDelegate.swift */,
 				016B9CE52C1B1E27009D2996 /* SceneDelegate.swift */,
 				016B9CE72C1B1E27009D2996 /* OnboardingViewController.swift */,
+				016B9D092C1B2E85009D2996 /* ProfileNicknameSettingViewController.swift */,
+				01717FDE2C1D62EE003F060E /* ProfileImageSettingViewController.swift */,
+				016B9D062C1B2A69009D2996 /* Extension */,
 				016B9CEC2C1B1E29009D2996 /* Assets.xcassets */,
 				016B9CEE2C1B1E29009D2996 /* LaunchScreen.storyboard */,
 				016B9CF12C1B1E29009D2996 /* Info.plist */,
 			);
 			path = MeaningOut;
+			sourceTree = "<group>";
+		};
+		016B9D062C1B2A69009D2996 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				016B9D022C1B2965009D2996 /* Colors.swift */,
+				016B9D042C1B2A07009D2996 /* UIColor+HexCode.swift */,
+				016B9D072C1B2B45009D2996 /* StringLiterals.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,9 +177,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				016B9D082C1B2B45009D2996 /* StringLiterals.swift in Sources */,
 				016B9CE82C1B1E27009D2996 /* OnboardingViewController.swift in Sources */,
+				016B9D032C1B2965009D2996 /* Colors.swift in Sources */,
+				01717FDF2C1D62EE003F060E /* ProfileImageSettingViewController.swift in Sources */,
 				016B9CE42C1B1E27009D2996 /* AppDelegate.swift in Sources */,
+				016B9D052C1B2A07009D2996 /* UIColor+HexCode.swift in Sources */,
 				016B9CE62C1B1E27009D2996 /* SceneDelegate.swift in Sources */,
+				016B9D0A2C1B2E85009D2996 /* ProfileNicknameSettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
