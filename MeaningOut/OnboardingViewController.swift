@@ -70,7 +70,7 @@ class OnboardingViewController: UIViewController {
     }
     
     @objc func startButtonClicked() {
-        let vc = ProfileSettingViewController()
+        let vc = ProfileNicknameSettingViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

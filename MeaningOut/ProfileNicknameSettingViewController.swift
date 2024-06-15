@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ProfileSettingViewController: UIViewController {
+class ProfileNicknameSettingViewController: UIViewController {
     
     let profileImageView = UIImageView()
     let profileImageButton = UIButton()
@@ -16,6 +16,13 @@ class ProfileSettingViewController: UIViewController {
     let nicknameTextFieldLine = UIView()
     let nicknameStatusLabel = UILabel()
     let completeButton = UIButton()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let profileNumber = UserDefaults.standard.integer(forKey: "profileNumber")
+        profileImageView.image = UIImage(named: "profile_\(profileNumber)")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,6 +116,7 @@ class ProfileSettingViewController: UIViewController {
     
     func setTarget() {
         nicknameTextField.addTarget(self, action: #selector(nicknameTextFieldDidChange), for: .editingChanged)
+        profileImageButton.addTarget(self, action: #selector(profileImageButtonClicked), for: .touchUpInside)
     }
     
     @objc func nicknameTextFieldDidChange(_ textField: UITextField) {
@@ -120,12 +128,19 @@ class ProfileSettingViewController: UIViewController {
         if text.count < 2 || text.count > 9 {
             nicknameStatusLabel.text = "2글자 이상 10글자 미만으로 설정해주세요"
         } else if text.rangeOfCharacter(from: specialLiterals) != nil {
-            nicknameStatusLabel.text = "닉네임에 @ # $ % 는 포함할 수 없어요"
+            nicknameStatusLabel.text = "닉네임에 @ # $ % 는 포함할 수 없어요^^"
         } else if text.rangeOfCharacter(from: numbers) != nil {
             nicknameStatusLabel.text = "닉네임에 숫자는 포함할 수 없어요"
         } else {
             nicknameStatusLabel.text = "사용할 수 있는 닉네임이에요"
             nicknameStatusLabel.textColor = Colors.orange
         }
+    }
+    
+    @objc func profileImageButtonClicked() {
+        let vc = ProfileImageSettingViewController()
+        vc.selectedImage = profileImageView.image
+        vc.navigationItem.hidesBackButton = false // 뒤로 가기 버튼을 숨기지 않음
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

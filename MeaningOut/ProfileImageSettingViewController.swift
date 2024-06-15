@@ -14,6 +14,7 @@ class ProfileImageSettingViewController: UIViewController, UICollectionViewDeleg
     
     let imageNames = (0...11).map { "profile_\($0)" }
     var selectedIndexPath: IndexPath?
+    var selectedImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,6 +117,7 @@ extension ProfileImageSettingViewController: UICollectionViewDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndexPath = indexPath
         profileImageView.image = UIImage(named: imageNames[indexPath.item])
+        UserDefaults.standard.set(indexPath.item, forKey: "profileNumber")
         collectionView.reloadData()
     }
 }
