@@ -22,6 +22,10 @@
 		016B9D0A2C1B2E85009D2996 /* ProfileNicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016B9D092C1B2E85009D2996 /* ProfileNicknameSettingViewController.swift */; };
 		01717FDF2C1D62EE003F060E /* ProfileImageSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01717FDE2C1D62EE003F060E /* ProfileImageSettingViewController.swift */; };
 		01717FE42C1D7869003F060E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01717FE32C1D7869003F060E /* MainViewController.swift */; };
+		01717FE72C1D860D003F060E /* RecentSearchModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 01717FE52C1D860D003F060E /* RecentSearchModel.xcdatamodeld */; };
+		01717FEA2C1D86F9003F060E /* Entity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01717FE82C1D86F9003F060E /* Entity+CoreDataClass.swift */; };
+		01717FEB2C1D86F9003F060E /* Entity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01717FE92C1D86F9003F060E /* Entity+CoreDataProperties.swift */; };
+		01717FED2C1D8732003F060E /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01717FEC2C1D8732003F060E /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +43,10 @@
 		016B9D092C1B2E85009D2996 /* ProfileNicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNicknameSettingViewController.swift; sourceTree = "<group>"; };
 		01717FDE2C1D62EE003F060E /* ProfileImageSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageSettingViewController.swift; sourceTree = "<group>"; };
 		01717FE32C1D7869003F060E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		01717FE62C1D860D003F060E /* RecentSearchModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecentSearchModel.xcdatamodel; sourceTree = "<group>"; };
+		01717FE82C1D86F9003F060E /* Entity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		01717FE92C1D86F9003F060E /* Entity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		01717FEC2C1D8732003F060E /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +66,8 @@
 		016B9CD72C1B1E27009D2996 = {
 			isa = PBXGroup;
 			children = (
+				01717FE82C1D86F9003F060E /* Entity+CoreDataClass.swift */,
+				01717FE92C1D86F9003F060E /* Entity+CoreDataProperties.swift */,
 				016B9CF72C1B208E009D2996 /* .gitignore */,
 				016B9CE22C1B1E27009D2996 /* MeaningOut */,
 				016B9CE12C1B1E27009D2996 /* Products */,
@@ -83,6 +93,8 @@
 				016B9CEC2C1B1E29009D2996 /* Assets.xcassets */,
 				016B9CEE2C1B1E29009D2996 /* LaunchScreen.storyboard */,
 				016B9CF12C1B1E29009D2996 /* Info.plist */,
+				01717FE52C1D860D003F060E /* RecentSearchModel.xcdatamodeld */,
+				01717FEC2C1D8732003F060E /* CoreDataManager.swift */,
 			);
 			path = MeaningOut;
 			sourceTree = "<group>";
@@ -200,8 +212,12 @@
 				016B9CE82C1B1E27009D2996 /* OnboardingViewController.swift in Sources */,
 				016B9D032C1B2965009D2996 /* Colors.swift in Sources */,
 				01717FDF2C1D62EE003F060E /* ProfileImageSettingViewController.swift in Sources */,
+				01717FE72C1D860D003F060E /* RecentSearchModel.xcdatamodeld in Sources */,
 				016B9CE42C1B1E27009D2996 /* AppDelegate.swift in Sources */,
 				016B9D052C1B2A07009D2996 /* UIColor+HexCode.swift in Sources */,
+				01717FED2C1D8732003F060E /* CoreDataManager.swift in Sources */,
+				01717FEA2C1D86F9003F060E /* Entity+CoreDataClass.swift in Sources */,
+				01717FEB2C1D86F9003F060E /* Entity+CoreDataProperties.swift in Sources */,
 				01717FE42C1D7869003F060E /* MainViewController.swift in Sources */,
 				016B9CE62C1B1E27009D2996 /* SceneDelegate.swift in Sources */,
 				016B9D0A2C1B2E85009D2996 /* ProfileNicknameSettingViewController.swift in Sources */,
@@ -472,6 +488,20 @@
 			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		01717FE52C1D860D003F060E /* RecentSearchModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				01717FE62C1D860D003F060E /* RecentSearchModel.xcdatamodel */,
+			);
+			currentVersion = 01717FE62C1D860D003F060E /* RecentSearchModel.xcdatamodel */;
+			name = RecentSearchModel.xcdatamodeld;
+			path = /Users/kangseokho/Desktop/SeSAC/MeaningOut/MeaningOut/RecentSearchModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 016B9CD82C1B1E27009D2996 /* Project object */;
 }
