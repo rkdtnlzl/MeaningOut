@@ -12,10 +12,16 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureNavigation()
         configureHierarchy()
         configureLayout()
         configureUI()
         setTarget()
+    }
+    
+    func configureNavigation() {
+        let nickname = UserDefaults.standard.string(forKey: "nickname")!
+        navigationItem.title = "\(nickname)'s Meaning Out"
     }
     
     func configureHierarchy() {

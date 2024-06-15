@@ -72,10 +72,11 @@ class ProfileNicknameSettingViewController: UIViewController {
         nicknameStatusLabel.font = .systemFont(ofSize: 13)
         
         completeButton.tintColor = .white
-        completeButton.backgroundColor = Colors.orange
+        completeButton.backgroundColor = Colors.gray
         completeButton.setTitle(StringLiterals.ButtonTitle.finish, for: .normal)
         completeButton.setTitleColor(.white, for: .normal)
         completeButton.layer.cornerRadius = 20
+        completeButton.isEnabled = false
     }
     
     func configureLayout() {
@@ -117,6 +118,7 @@ class ProfileNicknameSettingViewController: UIViewController {
     func setTarget() {
         nicknameTextField.addTarget(self, action: #selector(nicknameTextFieldDidChange), for: .editingChanged)
         profileImageButton.addTarget(self, action: #selector(profileImageButtonClicked), for: .touchUpInside)
+        completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
     }
     
     @objc func nicknameTextFieldDidChange(_ textField: UITextField) {
@@ -127,13 +129,19 @@ class ProfileNicknameSettingViewController: UIViewController {
         
         if text.count < 2 || text.count > 9 {
             nicknameStatusLabel.text = "2글자 이상 10글자 미만으로 설정해주세요"
+            
         } else if text.rangeOfCharacter(from: specialLiterals) != nil {
             nicknameStatusLabel.text = "닉네임에 @ # $ % 는 포함할 수 없어요^^"
+            completeButton.backgroundColor = Colors.gray
+            completeButton.isEnabled = false
         } else if text.rangeOfCharacter(from: numbers) != nil {
             nicknameStatusLabel.text = "닉네임에 숫자는 포함할 수 없어요"
+            completeButton.backgroundColor = Colors.gray
+            completeButton.isEnabled = false
         } else {
             nicknameStatusLabel.text = "사용할 수 있는 닉네임이에요"
-            nicknameStatusLabel.textColor = Colors.orange
+            completeButton.backgroundColor = Colors.orange
+            completeButton.isEnabled = true
         }
     }
     
@@ -142,5 +150,16 @@ class ProfileNicknameSettingViewController: UIViewController {
         vc.selectedImage = profileImageView.image
         vc.navigationItem.hidesBackButton = false
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func completeButtonClicked() {
+        UserDefaults.standard.set(nicknameTextField.text, forKey: "nickname")
+        UserDefaults.standard.set(true, forKey: "isUser")
+        
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        let sceneDelegate = windowScene?.delegate as? SceneDelegate
+        let rootVC = UINavigationController(rootViewController: MainViewController())
+        sceneDelegate?.window?.rootViewController = rootVC
+        sceneDelegate?.window?.makeKeyAndVisible()
     }
 }
