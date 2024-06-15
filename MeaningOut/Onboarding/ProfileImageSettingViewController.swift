@@ -97,7 +97,6 @@ extension ProfileImageSettingViewController: UICollectionViewDelegate, UICollect
         imageView.frame = cell.contentView.bounds
         imageView.clipsToBounds = true
         cell.contentView.addSubview(imageView)
-        
         cell.layer.cornerRadius = 40
         cell.clipsToBounds = true
         

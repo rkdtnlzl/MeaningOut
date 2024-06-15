@@ -21,6 +21,7 @@
 		016B9D082C1B2B45009D2996 /* StringLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016B9D072C1B2B45009D2996 /* StringLiterals.swift */; };
 		016B9D0A2C1B2E85009D2996 /* ProfileNicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016B9D092C1B2E85009D2996 /* ProfileNicknameSettingViewController.swift */; };
 		01717FDF2C1D62EE003F060E /* ProfileImageSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01717FDE2C1D62EE003F060E /* ProfileImageSettingViewController.swift */; };
+		01717FE42C1D7869003F060E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01717FE32C1D7869003F060E /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		016B9D072C1B2B45009D2996 /* StringLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiterals.swift; sourceTree = "<group>"; };
 		016B9D092C1B2E85009D2996 /* ProfileNicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNicknameSettingViewController.swift; sourceTree = "<group>"; };
 		01717FDE2C1D62EE003F060E /* ProfileImageSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageSettingViewController.swift; sourceTree = "<group>"; };
+		01717FE32C1D7869003F060E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,9 +77,8 @@
 			children = (
 				016B9CE32C1B1E27009D2996 /* AppDelegate.swift */,
 				016B9CE52C1B1E27009D2996 /* SceneDelegate.swift */,
-				016B9CE72C1B1E27009D2996 /* OnboardingViewController.swift */,
-				016B9D092C1B2E85009D2996 /* ProfileNicknameSettingViewController.swift */,
-				01717FDE2C1D62EE003F060E /* ProfileImageSettingViewController.swift */,
+				01717FE02C1D7831003F060E /* Onboarding */,
+				01717FE12C1D784A003F060E /* Main */,
 				016B9D062C1B2A69009D2996 /* Extension */,
 				016B9CEC2C1B1E29009D2996 /* Assets.xcassets */,
 				016B9CEE2C1B1E29009D2996 /* LaunchScreen.storyboard */,
@@ -94,6 +95,24 @@
 				016B9D072C1B2B45009D2996 /* StringLiterals.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		01717FE02C1D7831003F060E /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				016B9CE72C1B1E27009D2996 /* OnboardingViewController.swift */,
+				016B9D092C1B2E85009D2996 /* ProfileNicknameSettingViewController.swift */,
+				01717FDE2C1D62EE003F060E /* ProfileImageSettingViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		01717FE12C1D784A003F060E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				01717FE32C1D7869003F060E /* MainViewController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +202,7 @@
 				01717FDF2C1D62EE003F060E /* ProfileImageSettingViewController.swift in Sources */,
 				016B9CE42C1B1E27009D2996 /* AppDelegate.swift in Sources */,
 				016B9D052C1B2A07009D2996 /* UIColor+HexCode.swift in Sources */,
+				01717FE42C1D7869003F060E /* MainViewController.swift in Sources */,
 				016B9CE62C1B1E27009D2996 /* SceneDelegate.swift in Sources */,
 				016B9D0A2C1B2E85009D2996 /* ProfileNicknameSettingViewController.swift in Sources */,
 			);

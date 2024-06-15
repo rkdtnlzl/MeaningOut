@@ -73,6 +73,5 @@ class OnboardingViewController: UIViewController {
         let vc = ProfileNicknameSettingViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
 }
 

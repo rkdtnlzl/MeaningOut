@@ -140,7 +140,7 @@ class ProfileNicknameSettingViewController: UIViewController {
     @objc func profileImageButtonClicked() {
         let vc = ProfileImageSettingViewController()
         vc.selectedImage = profileImageView.image
-        vc.navigationItem.hidesBackButton = false // 뒤로 가기 버튼을 숨기지 않음
+        vc.navigationItem.hidesBackButton = false
         navigationController?.pushViewController(vc, animated: true)
     }
 }
