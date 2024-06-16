@@ -27,6 +27,9 @@
 		01717FEB2C1D86F9003F060E /* Entity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01717FE92C1D86F9003F060E /* Entity+CoreDataProperties.swift */; };
 		01717FED2C1D8732003F060E /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01717FEC2C1D8732003F060E /* CoreDataManager.swift */; };
 		01717FEF2C1EDB25003F060E /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01717FEE2C1EDB25003F060E /* SearchResultViewController.swift */; };
+		01717FF12C1F12DA003F060E /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01717FF02C1F12DA003F060E /* SearchResult.swift */; };
+		01717FF32C1F14C8003F060E /* SearchResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01717FF22C1F14C8003F060E /* SearchResultCollectionViewCell.swift */; };
+		01717FF52C1F2C05003F060E /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01717FF42C1F2C05003F060E /* APIKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +52,9 @@
 		01717FE92C1D86F9003F060E /* Entity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		01717FEC2C1D8732003F060E /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		01717FEE2C1EDB25003F060E /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		01717FF02C1F12DA003F060E /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		01717FF22C1F14C8003F060E /* SearchResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCollectionViewCell.swift; sourceTree = "<group>"; };
+		01717FF42C1F2C05003F060E /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +93,7 @@
 		016B9CE22C1B1E27009D2996 /* MeaningOut */ = {
 			isa = PBXGroup;
 			children = (
-				016B9CE32C1B1E27009D2996 /* AppDelegate.swift */,
-				016B9CE52C1B1E27009D2996 /* SceneDelegate.swift */,
+				01717FF62C1F39BF003F060E /* Application */,
 				01717FE02C1D7831003F060E /* Onboarding */,
 				01717FE12C1D784A003F060E /* Main */,
 				016B9D062C1B2A69009D2996 /* Extension */,
@@ -97,6 +102,7 @@
 				016B9CF12C1B1E29009D2996 /* Info.plist */,
 				01717FE52C1D860D003F060E /* RecentSearchModel.xcdatamodeld */,
 				01717FEC2C1D8732003F060E /* CoreDataManager.swift */,
+				01717FF42C1F2C05003F060E /* APIKey.swift */,
 			);
 			path = MeaningOut;
 			sourceTree = "<group>";
@@ -126,8 +132,19 @@
 			children = (
 				01717FE32C1D7869003F060E /* MainViewController.swift */,
 				01717FEE2C1EDB25003F060E /* SearchResultViewController.swift */,
+				01717FF22C1F14C8003F060E /* SearchResultCollectionViewCell.swift */,
+				01717FF02C1F12DA003F060E /* SearchResult.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		01717FF62C1F39BF003F060E /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				016B9CE32C1B1E27009D2996 /* AppDelegate.swift */,
+				016B9CE52C1B1E27009D2996 /* SceneDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,11 +230,13 @@
 			files = (
 				016B9D082C1B2B45009D2996 /* StringLiterals.swift in Sources */,
 				016B9CE82C1B1E27009D2996 /* OnboardingViewController.swift in Sources */,
+				01717FF32C1F14C8003F060E /* SearchResultCollectionViewCell.swift in Sources */,
 				016B9D032C1B2965009D2996 /* Colors.swift in Sources */,
 				01717FDF2C1D62EE003F060E /* ProfileImageSettingViewController.swift in Sources */,
 				01717FE72C1D860D003F060E /* RecentSearchModel.xcdatamodeld in Sources */,
 				016B9CE42C1B1E27009D2996 /* AppDelegate.swift in Sources */,
 				016B9D052C1B2A07009D2996 /* UIColor+HexCode.swift in Sources */,
+				01717FF12C1F12DA003F060E /* SearchResult.swift in Sources */,
 				01717FED2C1D8732003F060E /* CoreDataManager.swift in Sources */,
 				01717FEF2C1EDB25003F060E /* SearchResultViewController.swift in Sources */,
 				01717FEA2C1D86F9003F060E /* Entity+CoreDataClass.swift in Sources */,
@@ -225,6 +244,7 @@
 				01717FE42C1D7869003F060E /* MainViewController.swift in Sources */,
 				016B9CE62C1B1E27009D2996 /* SceneDelegate.swift in Sources */,
 				016B9D0A2C1B2E85009D2996 /* ProfileNicknameSettingViewController.swift in Sources */,
+				01717FF52C1F2C05003F060E /* APIKey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
