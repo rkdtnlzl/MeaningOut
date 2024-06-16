@@ -213,7 +213,8 @@ extension MainViewController: UISearchBarDelegate {
             if success {
                 DispatchQueue.main.async {
                     self?.updateUI()
-                    let searchResultsVC = SearchResultViewController(searchTerm: searchTerm)
+                    let searchResultsVC = SearchResultViewController()
+                    searchResultsVC.searchTerm = searchTerm
                     self?.navigationController?.pushViewController(searchResultsVC, animated: true)
                 }
             } else {
