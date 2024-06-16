@@ -13,6 +13,9 @@ class MainViewController: UIViewController {
     let searchBar = UISearchBar()
     let searchTableView = UITableView()
     let noSearchLabel = UILabel()
+    let headerView = UIView()
+    let headerLabel = UILabel()
+    let clearAllButton = UIButton()
     
     var recentSearches: [Entity] = []
     var context: NSManagedObjectContext?
@@ -25,12 +28,11 @@ class MainViewController: UIViewController {
         configureHierarchy()
         configureLayout()
         configureUI()
-        setTarget()
         fetchRecentSearches()
     }
     
     func configureNavigation() {
-        let nickname = UserDefaults.standard.string(forKey: "nickname") ?? "Guest"
+        let nickname = UserDefaults.standard.string(forKey: "nickname") ?? ""
         navigationItem.title = "\(nickname)'s Meaning Out"
     }
     
@@ -38,6 +40,11 @@ class MainViewController: UIViewController {
         view.addSubview(searchBar)
         view.addSubview(searchTableView)
         view.addSubview(noSearchLabel)
+        
+        headerView.addSubview(headerLabel)
+        headerView.addSubview(clearAllButton)
+        
+        searchTableView.tableHeaderView = headerView
     }
     
     func configureUI() {
@@ -52,6 +59,14 @@ class MainViewController: UIViewController {
         noSearchLabel.text = "최근 검색어가 없어요"
         noSearchLabel.textAlignment = .center
         noSearchLabel.isHidden = true
+        
+        headerLabel.text = "최근검색"
+        headerLabel.textAlignment = .right
+        headerLabel.font = .boldSystemFont(ofSize: 18)
+        
+        clearAllButton.setTitle("전체 삭제", for: .normal)
+        clearAllButton.setTitleColor(Colors.orange, for: .normal)
+        clearAllButton.addTarget(self, action: #selector(clearAllSearches), for: .touchUpInside)
     }
     
     func configureLayout() {
@@ -68,9 +83,17 @@ class MainViewController: UIViewController {
         noSearchLabel.snp.makeConstraints { make in
             make.center.equalTo(view.safeAreaLayoutGuide)
         }
+        
+        headerView.frame = CGRect(x: 0, y: 0, width: searchTableView.frame.width, height: 44)
+        headerLabel.snp.makeConstraints { make in
+            make.leading.equalTo(headerView.snp.leading).inset(16)
+            make.centerY.equalTo(headerView.snp.centerY)
+        }
+        clearAllButton.snp.makeConstraints { make in
+            make.trailing.equalTo(headerView.snp.trailing).inset(16)
+            make.centerY.equalTo(headerView.snp.centerY)
+        }
     }
-    
-    func setTarget() {}
     
     func fetchRecentSearches() {
         guard let context = context else { return }
@@ -87,6 +110,41 @@ class MainViewController: UIViewController {
         }
     }
     
+    func delete<T: NSManagedObject>(at index: Int, request: NSFetchRequest<T>) -> Bool {
+        request.predicate = NSPredicate(format: "index = %@", NSNumber(value: index))
+        
+        do {
+            if let recentTerms = try context?.fetch(request) {
+                if recentTerms.count == 0 { return false }
+                context?.delete(recentTerms[0])
+                try context?.save()
+                return true
+            }
+        } catch {
+            print(error.localizedDescription)
+            return false
+        }
+        
+        return false
+    }
+    
+    func deleteAll<T: NSManagedObject>(request: NSFetchRequest<T>) -> Bool {
+        do {
+            if let recentTerms = try context?.fetch(request) {
+                for term in recentTerms {
+                    context?.delete(term)
+                }
+                try context?.save()
+                return true
+            }
+        } catch {
+            print(error.localizedDescription)
+            return false
+        }
+        
+        return false
+    }
+    
     func saveRecentSearch(term: String, date: Date, index: Int32, completion: @escaping (Bool) -> Void) {
         guard let context = self.context,
               let entity = NSEntityDescription.entity(forEntityName: "Entity", in: context)
@@ -100,7 +158,7 @@ class MainViewController: UIViewController {
         
         do {
             try context.save()
-            recentSearches.append(recentTerms)
+            fetchRecentSearches() // 저장 후 데이터 갱신
             completion(true)
         } catch {
             print(error.localizedDescription)
@@ -118,6 +176,14 @@ class MainViewController: UIViewController {
             searchTableView.reloadData()
         }
     }
+    
+    @objc func clearAllSearches() {
+        let fetchRequest: NSFetchRequest<Entity> = Entity.fetchRequest()
+        if deleteAll(request: fetchRequest) {
+            recentSearches.removeAll()
+            updateUI()
+        }
+    }
 }
 
 extension MainViewController: UISearchBarDelegate {
@@ -130,6 +196,8 @@ extension MainViewController: UISearchBarDelegate {
             if success {
                 DispatchQueue.main.async {
                     self?.updateUI()
+                    let searchResultsVC = SearchResultViewController(searchTerm: searchTerm)
+                    self?.navigationController?.pushViewController(searchResultsVC, animated: true)
                 }
             } else {
                 print("Error")
@@ -147,6 +215,26 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = recentSearches[indexPath.row].term
+
+        let deleteButton = UIButton(type: .system)
+        deleteButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        deleteButton.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
+        deleteButton.tintColor = .black
+        deleteButton.tag = indexPath.row
+        deleteButton.addTarget(self, action: #selector(deleteRecentSearch(_:)), for: .touchUpInside)
+        cell.accessoryView = deleteButton
+        
         return cell
+    }
+    
+    @objc func deleteRecentSearch(_ sender: UIButton) {
+        let index = sender.tag
+        let searchTermToDelete = recentSearches[index]
+        
+        let fetchRequest: NSFetchRequest<Entity> = Entity.fetchRequest()
+        if delete(at: Int(searchTermToDelete.index), request: fetchRequest) {
+            recentSearches.remove(at: index)
+            updateUI()
+        }
     }
 }

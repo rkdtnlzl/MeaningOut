@@ -26,6 +26,7 @@
 		01717FEA2C1D86F9003F060E /* Entity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01717FE82C1D86F9003F060E /* Entity+CoreDataClass.swift */; };
 		01717FEB2C1D86F9003F060E /* Entity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01717FE92C1D86F9003F060E /* Entity+CoreDataProperties.swift */; };
 		01717FED2C1D8732003F060E /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01717FEC2C1D8732003F060E /* CoreDataManager.swift */; };
+		01717FEF2C1EDB25003F060E /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01717FEE2C1EDB25003F060E /* SearchResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		01717FE82C1D86F9003F060E /* Entity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		01717FE92C1D86F9003F060E /* Entity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		01717FEC2C1D8732003F060E /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		01717FEE2C1EDB25003F060E /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				01717FE32C1D7869003F060E /* MainViewController.swift */,
+				01717FEE2C1EDB25003F060E /* SearchResultViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				016B9CE42C1B1E27009D2996 /* AppDelegate.swift in Sources */,
 				016B9D052C1B2A07009D2996 /* UIColor+HexCode.swift in Sources */,
 				01717FED2C1D8732003F060E /* CoreDataManager.swift in Sources */,
+				01717FEF2C1EDB25003F060E /* SearchResultViewController.swift in Sources */,
 				01717FEA2C1D86F9003F060E /* Entity+CoreDataClass.swift in Sources */,
 				01717FEB2C1D86F9003F060E /* Entity+CoreDataProperties.swift in Sources */,
 				01717FE42C1D7869003F060E /* MainViewController.swift in Sources */,
