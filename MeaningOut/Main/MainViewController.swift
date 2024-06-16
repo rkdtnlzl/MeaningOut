@@ -12,6 +12,7 @@ class MainViewController: UIViewController {
     
     let searchBar = UISearchBar()
     let searchTableView = UITableView()
+    let noSearchImageView = UIImageView()
     let noSearchLabel = UILabel()
     let headerView = UIView()
     let headerLabel = UILabel()
@@ -40,6 +41,7 @@ class MainViewController: UIViewController {
         view.addSubview(searchBar)
         view.addSubview(searchTableView)
         view.addSubview(noSearchLabel)
+        view.addSubview(noSearchImageView)
         
         headerView.addSubview(headerLabel)
         headerView.addSubview(clearAllButton)
@@ -56,8 +58,13 @@ class MainViewController: UIViewController {
         searchTableView.dataSource = self
         searchTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
+        noSearchImageView.image = UIImage(named: "empty")
+        noSearchImageView.contentMode = .scaleAspectFit
+        noSearchImageView.clipsToBounds = true
+        
         noSearchLabel.text = "최근 검색어가 없어요"
         noSearchLabel.textAlignment = .center
+        noSearchLabel.font = .boldSystemFont(ofSize: 17)
         noSearchLabel.isHidden = true
         
         headerLabel.text = "최근검색"
@@ -80,11 +87,19 @@ class MainViewController: UIViewController {
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
+        noSearchImageView.snp.makeConstraints { make in
+            make.top.equalTo(searchBar.snp.bottom).offset(80)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(40)
+            make.height.equalTo(200)
+        }
+        
         noSearchLabel.snp.makeConstraints { make in
-            make.center.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(noSearchImageView.snp.bottom).offset(20)
+            make.centerX.equalTo(view.safeAreaLayoutGuide)
         }
         
         headerView.frame = CGRect(x: 0, y: 0, width: searchTableView.frame.width, height: 44)
+        
         headerLabel.snp.makeConstraints { make in
             make.leading.equalTo(headerView.snp.leading).inset(16)
             make.centerY.equalTo(headerView.snp.centerY)
@@ -170,9 +185,11 @@ class MainViewController: UIViewController {
         if recentSearches.isEmpty {
             searchTableView.isHidden = true
             noSearchLabel.isHidden = false
+            noSearchImageView.isHidden = false
         } else {
             searchTableView.isHidden = false
             noSearchLabel.isHidden = true
+            noSearchImageView.isHidden = true
             searchTableView.reloadData()
         }
     }
