@@ -93,6 +93,7 @@
 		016B9CE22C1B1E27009D2996 /* MeaningOut */ = {
 			isa = PBXGroup;
 			children = (
+				01717FF72C1F3A76003F060E /* CoreData */,
 				01717FF62C1F39BF003F060E /* Application */,
 				01717FE02C1D7831003F060E /* Onboarding */,
 				01717FE12C1D784A003F060E /* Main */,
@@ -100,8 +101,6 @@
 				016B9CEC2C1B1E29009D2996 /* Assets.xcassets */,
 				016B9CEE2C1B1E29009D2996 /* LaunchScreen.storyboard */,
 				016B9CF12C1B1E29009D2996 /* Info.plist */,
-				01717FE52C1D860D003F060E /* RecentSearchModel.xcdatamodeld */,
-				01717FEC2C1D8732003F060E /* CoreDataManager.swift */,
 				01717FF42C1F2C05003F060E /* APIKey.swift */,
 			);
 			path = MeaningOut;
@@ -145,6 +144,15 @@
 				016B9CE52C1B1E27009D2996 /* SceneDelegate.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		01717FF72C1F3A76003F060E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				01717FE52C1D860D003F060E /* RecentSearchModel.xcdatamodeld */,
+				01717FEC2C1D8732003F060E /* CoreDataManager.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -520,8 +528,7 @@
 				01717FE62C1D860D003F060E /* RecentSearchModel.xcdatamodel */,
 			);
 			currentVersion = 01717FE62C1D860D003F060E /* RecentSearchModel.xcdatamodel */;
-			name = RecentSearchModel.xcdatamodeld;
-			path = /Users/kangseokho/Desktop/SeSAC/MeaningOut/MeaningOut/RecentSearchModel.xcdatamodeld;
+			path = RecentSearchModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
