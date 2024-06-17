@@ -72,7 +72,7 @@ class SearchResultViewController: UIViewController {
         guard !isFetching && !isEnd else { return }
         isFetching = true
         
-        let url = "https://openapi.naver.com/v1/search/shop.json"
+        let url = APIURL.naverSearchURI
         let parameters: [String: String] = [
             "query": searchTerm,
             "display": "10",

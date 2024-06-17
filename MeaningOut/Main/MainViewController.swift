@@ -62,16 +62,16 @@ class MainViewController: UIViewController {
         noSearchImageView.contentMode = .scaleAspectFit
         noSearchImageView.clipsToBounds = true
         
-        noSearchLabel.text = "최근 검색어가 없어요"
+        noSearchLabel.text = StringLiterals.LabelText.nosearchTitle
         noSearchLabel.textAlignment = .center
         noSearchLabel.font = .boldSystemFont(ofSize: 17)
         noSearchLabel.isHidden = true
         
-        headerLabel.text = "최근검색"
+        headerLabel.text = StringLiterals.LabelText.recentSearchTitle
         headerLabel.textAlignment = .right
         headerLabel.font = .boldSystemFont(ofSize: 18)
         
-        clearAllButton.setTitle("전체 삭제", for: .normal)
+        clearAllButton.setTitle(StringLiterals.ButtonTitle.allDelete, for: .normal)
         clearAllButton.setTitleColor(Colors.orange, for: .normal)
         clearAllButton.addTarget(self, action: #selector(clearAllSearches), for: .touchUpInside)
     }

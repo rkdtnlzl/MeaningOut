@@ -8,9 +8,11 @@
 import UIKit
 import SnapKit
 
-class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SettingViewController: UIViewController {
     
     let tableView = UITableView()
+    
+    let list = ["나의 장바구니 목록", "자주 묻는 질문", "1:1 문의", "알림 설정", "탈퇴하기"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +23,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func configureNavigation() {
-        navigationItem.title = "SETTING"
+        navigationItem.title = StringLiterals.NavigationTitle.Setting
     }
     
     func configureUI() {
@@ -38,7 +40,9 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             make.edges.equalToSuperview()
         }
     }
-    
+}
+
+extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -67,8 +71,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.imageView?.layer.cornerRadius = 33
             cell.accessoryType = .disclosureIndicator
         } else {
-            let titles = ["나의 장바구니 목록", "자주 묻는 질문", "1:1 문의", "알림 설정", "탈퇴하기"]
-            cell.textLabel?.text = titles[indexPath.row - 1]
+            cell.textLabel?.text = list[indexPath.row - 1]
         }
         return cell
     }

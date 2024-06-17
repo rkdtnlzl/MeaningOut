@@ -10,6 +10,8 @@ import Foundation
 enum StringLiterals {
     enum LabelText {
         static let onboardingTitle = "MeaningOut"
+        static let nosearchTitle = "최근 검색어가 없어요"
+        static let recentSearchTitle = "최근검색"
         
         enum NickNameStatus {
             static let rightCase = "사용할 수 있는 닉네임입니다"
@@ -22,6 +24,7 @@ enum StringLiterals {
     enum ButtonTitle {
         static let launch = "시작하기"
         static let finish = "완료"
+        static let allDelete = "전체 삭제"
     }
     
     enum Placeholder {
@@ -30,5 +33,6 @@ enum StringLiterals {
     
     enum NavigationTitle {
         static let profileSetting = "PROFILE SETTING"
+        static let Setting = "SETTING"
     }
 }
