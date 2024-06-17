@@ -32,7 +32,7 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
         imageView.layer.cornerRadius = 10
         
         mallLabel.font = .systemFont(ofSize: 13)
-        mallLabel.textColor = Colors.lightGray
+        mallLabel.textColor = Colors.gray
         
         titleLabel.font = .systemFont(ofSize: 15)
         titleLabel.numberOfLines = 2

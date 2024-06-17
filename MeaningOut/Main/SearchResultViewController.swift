@@ -9,21 +9,13 @@ import UIKit
 import SnapKit
 import Alamofire
 
-//
-//  SearchResultViewController.swift
-//  MeaningOut
-//
-//  Created by 강석호 on 6/16/24.
-//
-
-import UIKit
-import SnapKit
-import Alamofire
-
 class SearchResultViewController: UIViewController {
     
     var searchTerm: String = ""
     var searchResults: [SearchResult] = []
+    var currentPage = 1
+    var isFetching = false
+    var isEnd = false
     
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
@@ -74,15 +66,17 @@ class SearchResultViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(SearchResultCollectionViewCell.self, forCellWithReuseIdentifier: "SearchResultCollectionViewCell")
-        
-        collectionView.isPagingEnabled = true
     }
     
     func fetchSearchResults() {
+        guard !isFetching && !isEnd else { return }
+        isFetching = true
+        
         let url = "https://openapi.naver.com/v1/search/shop.json"
         let parameters: [String: String] = [
             "query": searchTerm,
-            "display": "10"
+            "display": "10",
+            "start": "\(currentPage)"
         ]
         let headers: HTTPHeaders = [
             "X-Naver-Client-Id": "\(APIKey.naverID)",
@@ -90,9 +84,11 @@ class SearchResultViewController: UIViewController {
         ]
         
         AF.request(url, parameters: parameters, headers: headers).responseDecodable(of: SearchResponse.self) { response in
+            self.isFetching = false
             switch response.result {
             case .success(let data):
-                self.searchResults = data.items
+                self.searchResults.append(contentsOf: data.items)
+                self.isEnd = data.items.isEmpty
                 self.collectionView.reloadData()
             case .failure(let error):
                 print("Error fetching search results: \(error)")
@@ -117,5 +113,23 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
         let collectionViewSize = collectionView.frame.size.width - 30
         let itemWidth = collectionViewSize / 2
         return CGSize(width: itemWidth, height: itemWidth + 80)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = searchResults[indexPath.item]
+        let vc = SearchResultDetailViewController()
+        vc.urlString = item.link
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        
+        if offsetY > contentHeight - height {
+            currentPage += 1
+            fetchSearchResults()
+        }
     }
 }
