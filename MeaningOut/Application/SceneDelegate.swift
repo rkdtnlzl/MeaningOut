@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         
         if data {
-            let rootVC = UINavigationController(rootViewController: MainViewController())
+            let rootVC = TabBarController()
             window?.rootViewController = rootVC
         } else {
             let rootVC = UINavigationController(rootViewController: OnboardingViewController())
