@@ -64,7 +64,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             
             let profileNumber = UserDefaults.standard.integer(forKey: "profileNumber")
             cell.imageView?.image = UIImage(named: "profile_\(profileNumber)")
-            cell.imageView?.contentMode = .scaleAspectFill
+            cell.imageView?.contentMode = .scaleAspectFit
             cell.imageView?.clipsToBounds = true
             cell.imageView?.layer.borderWidth = 5
             cell.imageView?.layer.borderColor = UIColor.orange.cgColor
@@ -82,7 +82,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return 120
+            return 80
         } else {
             return UITableView.automaticDimension
         }

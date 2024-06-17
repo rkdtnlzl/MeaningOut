@@ -255,4 +255,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             updateUI()
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let searchTerm = recentSearches[indexPath.row].term
+        let vc = SearchResultViewController()
+        vc.searchTerm = searchTerm ?? ""
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
