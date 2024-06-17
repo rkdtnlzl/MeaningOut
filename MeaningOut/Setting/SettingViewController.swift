@@ -8,6 +8,9 @@
 import UIKit
 import SnapKit
 
+import UIKit
+import SnapKit
+
 class SettingViewController: UIViewController {
     
     let tableView = UITableView()
@@ -34,6 +37,7 @@ class SettingViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(ProfileCell.self, forCellReuseIdentifier: "ProfileCell")
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints { make in
@@ -48,32 +52,23 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return list.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
-        
         if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell", for: indexPath) as! ProfileCell
             let nickname = UserDefaults.standard.string(forKey: "nickname") ?? ""
-            cell.textLabel?.text = "\(nickname)"
-            cell.textLabel?.font = .boldSystemFont(ofSize: 17)
-            cell.detailTextLabel?.text = "2024.06.15 가입"
-            cell.detailTextLabel?.textColor = .gray
-            cell.detailTextLabel?.font = .systemFont(ofSize: 14)
-            
             let profileNumber = UserDefaults.standard.integer(forKey: "profileNumber")
-            cell.imageView?.image = UIImage(named: "profile_\(profileNumber)")
-            cell.imageView?.contentMode = .scaleAspectFit
-            cell.imageView?.clipsToBounds = true
-            cell.imageView?.layer.borderWidth = 5
-            cell.imageView?.layer.borderColor = UIColor.orange.cgColor
-            cell.imageView?.layer.cornerRadius = 33
+            let profileImage = UIImage(named: "profile_\(profileNumber)")
+            cell.configure(nickname: nickname, joinDate: "2024.06.15 가입", profileImage: profileImage)
             cell.accessoryType = .disclosureIndicator
+            return cell
         } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.text = list[indexPath.row - 1]
+            return cell
         }
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -82,7 +77,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return 80
+            return 100
         } else {
             return UITableView.automaticDimension
         }

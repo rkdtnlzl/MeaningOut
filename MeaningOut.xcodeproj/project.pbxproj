@@ -33,6 +33,7 @@
 		017180242C201843003F060E /* SearchResultDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017180232C201843003F060E /* SearchResultDetailViewController.swift */; };
 		017180262C2021ED003F060E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017180252C2021ED003F060E /* TabBarViewController.swift */; };
 		017180292C202299003F060E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017180282C202299003F060E /* SettingViewController.swift */; };
+		0171802B2C208690003F060E /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0171802A2C208690003F060E /* ProfileCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		017180232C201843003F060E /* SearchResultDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDetailViewController.swift; sourceTree = "<group>"; };
 		017180252C2021ED003F060E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		017180282C202299003F060E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		0171802A2C208690003F060E /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				017180282C202299003F060E /* SettingViewController.swift */,
+				0171802A2C208690003F060E /* ProfileCell.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				016B9D032C1B2965009D2996 /* Colors.swift in Sources */,
 				01717FDF2C1D62EE003F060E /* ProfileImageSettingViewController.swift in Sources */,
 				01717FE72C1D860D003F060E /* RecentSearchModel.xcdatamodeld in Sources */,
+				0171802B2C208690003F060E /* ProfileCell.swift in Sources */,
 				016B9CE42C1B1E27009D2996 /* AppDelegate.swift in Sources */,
 				016B9D052C1B2A07009D2996 /* UIColor+HexCode.swift in Sources */,
 				01717FF12C1F12DA003F060E /* SearchResult.swift in Sources */,
