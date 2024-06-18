@@ -25,6 +25,12 @@ class SettingViewController: UIViewController {
         configureTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
+    
     func configureNavigation() {
         navigationItem.title = StringLiterals.NavigationTitle.Setting
     }
@@ -78,6 +84,31 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.row == 0 {
+            let vc = ProfileNicknameModifyViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.row == list.count {
+            let alert = UIAlertController(title: StringLiterals.AlertLabel.alertTitle, message: StringLiterals.AlertLabel.alertMessage, preferredStyle: .alert)
+            let confirmAction = UIAlertAction(title: "확인", style: .destructive) { _ in
+                if let appDomain = Bundle.main.bundleIdentifier {
+                    UserDefaults.standard.removePersistentDomain(forName: appDomain)
+                }
+                
+                let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+                let sceneDelegate = windowScene?.delegate as? SceneDelegate
+                let rootVC = OnboardingViewController()
+                sceneDelegate?.window?.rootViewController = rootVC
+                sceneDelegate?.window?.makeKeyAndVisible()
+            }
+            let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+            
+            alert.addAction(confirmAction)
+            alert.addAction(cancelAction)
+            
+            present(alert, animated: true, completion: nil)
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
