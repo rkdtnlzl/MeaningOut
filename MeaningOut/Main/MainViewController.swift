@@ -33,7 +33,7 @@ class MainViewController: UIViewController {
     }
     
     func configureNavigation() {
-        let nickname = UserDefaults.standard.string(forKey: "nickname") ?? ""
+        let nickname = UserDefaults.standard.string(forKey: "\(UserDefaultsKey.nicknameKey)") ?? ""
         navigationItem.title = "\(nickname)'s Meaning Out"
     }
     
@@ -173,7 +173,7 @@ class MainViewController: UIViewController {
         
         do {
             try context.save()
-            fetchRecentSearches() // 저장 후 데이터 갱신
+            fetchRecentSearches()
             completion(true)
         } catch {
             print(error.localizedDescription)

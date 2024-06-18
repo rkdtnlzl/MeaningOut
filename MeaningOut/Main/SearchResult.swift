@@ -16,5 +16,7 @@ struct SearchResult: Decodable {
 }
 
 struct SearchResponse: Decodable {
+    let lastBuildDate: String
+    let total: Int
     let items: [SearchResult]
 }

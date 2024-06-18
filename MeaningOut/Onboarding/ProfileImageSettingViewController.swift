@@ -11,7 +11,6 @@ class ProfileImageSettingViewController: UIViewController, UICollectionViewDeleg
     
     let profileImageView = UIImageView()
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
-    
     let imageNames = (0...11).map { "profile_\($0)" }
     var selectedIndexPath: IndexPath?
     var selectedImage: UIImage?
@@ -43,7 +42,7 @@ class ProfileImageSettingViewController: UIViewController, UICollectionViewDeleg
         profileImageView.layer.borderWidth = 5
         profileImageView.layer.borderColor = Colors.orange.cgColor
         profileImageView.clipsToBounds = true
-        let profileNumber = UserDefaults.standard.integer(forKey: "profileNumber")
+        let profileNumber = UserDefaults.standard.integer(forKey: "\(UserDefaultsKey.profileNumberKey)")
         profileImageView.image = UIImage(named: "profile_\(profileNumber)")
         
         collectionView.delegate = self
@@ -118,7 +117,7 @@ extension ProfileImageSettingViewController: UICollectionViewDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndexPath = indexPath
         profileImageView.image = UIImage(named: imageNames[indexPath.item])
-        UserDefaults.standard.set(indexPath.item, forKey: "profileNumber")
+        UserDefaults.standard.set(indexPath.item, forKey: "\(UserDefaultsKey.profileNumberKey)")
         collectionView.reloadData()
     }
 }

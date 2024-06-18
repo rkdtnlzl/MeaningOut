@@ -58,8 +58,8 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell", for: indexPath) as! ProfileCell
-            let nickname = UserDefaults.standard.string(forKey: "nickname") ?? ""
-            let profileNumber = UserDefaults.standard.integer(forKey: "profileNumber")
+            let nickname = UserDefaults.standard.string(forKey: "\(UserDefaultsKey.nicknameKey)") ?? ""
+            let profileNumber = UserDefaults.standard.integer(forKey: "\(UserDefaultsKey.profileNumberKey)")
             let profileImage = UIImage(named: "profile_\(profileNumber)")
             cell.configure(nickname: nickname, joinDate: "2024.06.15 가입", profileImage: profileImage)
             cell.accessoryType = .disclosureIndicator

@@ -20,7 +20,7 @@ class ProfileNicknameSettingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let profileNumber = UserDefaults.standard.integer(forKey: "profileNumber")
+        let profileNumber = UserDefaults.standard.integer(forKey: "\(UserDefaultsKey.profileNumberKey)")
         profileImageView.image = UIImage(named: "profile_\(profileNumber)")
     }
     
@@ -128,18 +128,17 @@ class ProfileNicknameSettingViewController: UIViewController {
         let numbers = CharacterSet.decimalDigits
         
         if text.count < 2 || text.count > 9 {
-            nicknameStatusLabel.text = "2글자 이상 10글자 미만으로 설정해주세요"
-            
+            nicknameStatusLabel.text = StringLiterals.LabelText.NickNameStatus.numberCase
         } else if text.rangeOfCharacter(from: specialLiterals) != nil {
-            nicknameStatusLabel.text = "닉네임에 @ # $ % 는 포함할 수 없어요^^"
+            nicknameStatusLabel.text = StringLiterals.LabelText.NickNameStatus.specialLiteralsCase
             completeButton.backgroundColor = Colors.gray
             completeButton.isEnabled = false
         } else if text.rangeOfCharacter(from: numbers) != nil {
-            nicknameStatusLabel.text = "닉네임에 숫자는 포함할 수 없어요"
+            nicknameStatusLabel.text = StringLiterals.LabelText.NickNameStatus.numberOfLiteralsCase
             completeButton.backgroundColor = Colors.gray
             completeButton.isEnabled = false
         } else {
-            nicknameStatusLabel.text = "사용할 수 있는 닉네임이에요"
+            nicknameStatusLabel.text = StringLiterals.LabelText.NickNameStatus.rightCase
             completeButton.backgroundColor = Colors.orange
             completeButton.isEnabled = true
         }
@@ -153,12 +152,12 @@ class ProfileNicknameSettingViewController: UIViewController {
     }
     
     @objc func completeButtonClicked() {
-        UserDefaults.standard.set(nicknameTextField.text, forKey: "nickname")
-        UserDefaults.standard.set(true, forKey: "isUser")
+        UserDefaults.standard.set(nicknameTextField.text, forKey: "\(UserDefaultsKey.nicknameKey)")
+        UserDefaults.standard.set(true, forKey: "\(UserDefaultsKey.isUserKey)")
         
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate
-        let rootVC = UINavigationController(rootViewController: TabBarController())
+        let rootVC = TabBarController()
         sceneDelegate?.window?.rootViewController = rootVC
         sceneDelegate?.window?.makeKeyAndVisible()
     }

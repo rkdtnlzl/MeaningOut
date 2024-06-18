@@ -13,9 +13,18 @@ class SearchResultViewController: UIViewController {
     
     var searchTerm: String = ""
     var searchResults: [SearchResult] = []
+    var lastBuildDate: Date?
+    var totalResults: Int = 0
     var currentPage = 1
     var isFetching = false
     var isEnd = false
+    
+    let resultsCountLabel = UILabel()
+    let sortStackView = UIStackView()
+    let sortAccuracyButton = UIButton()
+    let sortDateButton = UIButton()
+    let sortPriceHighButton = UIButton()
+    let sortPriceLowButton = UIButton()
     
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
@@ -49,16 +58,63 @@ class SearchResultViewController: UIViewController {
     }
     
     func configureHierarchy() {
+        view.addSubview(resultsCountLabel)
+        view.addSubview(sortStackView)
         view.addSubview(collectionView)
+        
+        sortStackView.addArrangedSubview(sortAccuracyButton)
+        sortStackView.addArrangedSubview(sortDateButton)
+        sortStackView.addArrangedSubview(sortPriceHighButton)
+        sortStackView.addArrangedSubview(sortPriceLowButton)
     }
     
     func configureUI() {
         view.backgroundColor = .white
+        
+        resultsCountLabel.textAlignment = .center
+        resultsCountLabel.font = .boldSystemFont(ofSize: 16)
+        resultsCountLabel.textColor = Colors.orange
+        
+        sortStackView.axis = .horizontal
+        sortStackView.distribution = .fillEqually
+        sortStackView.spacing = 6
+        
+        configureButton(sortAccuracyButton, title: "정확도순")
+        configureButton(sortDateButton, title: "날짜순")
+        configureButton(sortPriceHighButton, title: "가격높은순")
+        configureButton(sortPriceLowButton, title: "가격낮은순")
+        
+        sortAccuracyButton.addTarget(self, action: #selector(sortByAccuracy), for: .touchUpInside)
+        sortDateButton.addTarget(self, action: #selector(sortByDate), for: .touchUpInside)
+        sortPriceHighButton.addTarget(self, action: #selector(sortByPriceHigh), for: .touchUpInside)
+        sortPriceLowButton.addTarget(self, action: #selector(sortByPriceLow), for: .touchUpInside)
+    }
+    
+    func configureButton(_ button: UIButton, title: String) {
+        button.setTitle(title, for: .normal)
+        button.backgroundColor = .white
+        button.setTitleColor(.black, for: .normal)
+        button.layer.cornerRadius = 10
+        button.layer.borderWidth = 1
+        button.layer.borderColor = Colors.darkGray.cgColor
     }
     
     func configureLayout() {
+        resultsCountLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(10)
+            make.leading.equalTo(view.safeAreaLayoutGuide).inset(20)
+        }
+        
+        sortStackView.snp.makeConstraints { make in
+            make.top.equalTo(resultsCountLabel.snp.bottom).offset(10)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(15)
+            make.height.equalTo(36)
+        }
+        
         collectionView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(sortStackView.snp.bottom).offset(10)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
@@ -89,11 +145,41 @@ class SearchResultViewController: UIViewController {
             case .success(let data):
                 self.searchResults.append(contentsOf: data.items)
                 self.isEnd = data.items.isEmpty
+                self.totalResults = data.total
+                self.resultsCountLabel.text = "총 \(self.totalResults)개의 결과"
                 self.collectionView.reloadData()
+                
+                let formatter = DateFormatter()
+                formatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss Z"
+                self.lastBuildDate = formatter.date(from: data.lastBuildDate)
+                
             case .failure(let error):
                 print("Error fetching search results: \(error)")
             }
         }
+    }
+    
+    @objc func sortByAccuracy() {
+        self.totalResults = 0
+        self.currentPage = 1
+        self.isFetching = false
+        self.isEnd = false
+        fetchSearchResults()
+    }
+    
+    @objc func sortByDate() {
+        searchResults.sort { $0.title > $1.title }
+        collectionView.reloadData()
+    }
+    
+    @objc func sortByPriceHigh() {
+        searchResults.sort { Int($0.lprice) ?? 0 > Int($1.lprice) ?? 0 }
+        collectionView.reloadData()
+    }
+    
+    @objc func sortByPriceLow() {
+        searchResults.sort { Int($0.lprice) ?? 0 < Int($1.lprice) ?? 0 }
+        collectionView.reloadData()
     }
 }
 
@@ -126,7 +212,6 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         let height = scrollView.frame.size.height
-        
         if offsetY > contentHeight - height {
             currentPage += 1
             fetchSearchResults()

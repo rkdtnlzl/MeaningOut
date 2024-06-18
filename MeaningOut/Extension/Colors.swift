@@ -13,8 +13,4 @@ enum Colors {
     static let gray = UIColor(hexCode: "828282")
     static let darkGray = UIColor(hexCode: "4C4C4C")
     static let lightGray = UIColor(hexCode: "CDCDCD")
-    
-    // 필요한 enum을 만들어서 사용해주세요
-    // 사용예시: titleLabel.text = StringLiterals.TabBar.home
-    
 }
