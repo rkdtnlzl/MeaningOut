@@ -13,7 +13,7 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tabBar.tintColor = .red
+        tabBar.tintColor = Colors.orange
         tabBar.unselectedItemTintColor = .gray
         
         let search = MainViewController()
