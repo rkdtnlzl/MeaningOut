@@ -25,11 +25,17 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        configureNavigation()
+//        configureNavigation()
         configureHierarchy()
         configureLayout()
         configureUI()
         fetchRecentSearches()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        configureNavigation()
     }
     
     func configureNavigation() {
