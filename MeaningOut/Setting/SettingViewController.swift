@@ -38,6 +38,7 @@ class SettingViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.register(ProfileCell.self, forCellReuseIdentifier: "ProfileCell")
+        tableView.register(MyLikedCell.self, forCellReuseIdentifier: "MyLikedCell")
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints { make in
@@ -63,6 +64,10 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             let profileImage = UIImage(named: "profile_\(profileNumber)")
             cell.configure(nickname: nickname, joinDate: "2024.06.15 가입", profileImage: profileImage)
             cell.accessoryType = .disclosureIndicator
+            return cell
+        } else if indexPath.row == 1{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MyLikedCell", for: indexPath) as! MyLikedCell
+            cell.configure()
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)

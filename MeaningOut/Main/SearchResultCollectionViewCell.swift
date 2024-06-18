@@ -15,6 +15,8 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
     let titleLabel = UILabel()
     let priceLabel = UILabel()
     let imageView = UIImageView()
+    let likeButton = UIButton()
+    var item: SearchResult?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,10 +43,15 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
         priceLabel.font = .boldSystemFont(ofSize: 17)
         priceLabel.textColor = .black
         
+        likeButton.setImage(UIImage(named: "like_unselected"), for: .normal)
+        likeButton.setImage(UIImage(named: "like_selected"), for: .selected)
+        likeButton.addTarget(self, action: #selector(toggleLike), for: .touchUpInside)
+        
         contentView.addSubview(imageView)
         contentView.addSubview(mallLabel)
         contentView.addSubview(titleLabel)
         contentView.addSubview(priceLabel)
+        contentView.addSubview(likeButton)
         
         imageView.snp.makeConstraints { make in
             make.horizontalEdges.top.equalTo(contentView)
@@ -65,14 +72,41 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
             make.top.equalTo(titleLabel.snp.bottom).offset(10)
             make.horizontalEdges.equalTo(contentView)
         }
+        
+        likeButton.snp.makeConstraints { make in
+            make.bottom.trailing.equalTo(imageView).inset(10)
+            make.width.height.equalTo(40)
+        }
     }
     
     func configure(with item: SearchResult) {
+        self.item = item
         titleLabel.text = item.title
         priceLabel.text = "\(item.lprice) 원"
         mallLabel.text = item.mallName
         if let url = URL(string: item.image) {
             imageView.kf.setImage(with: url)
         }
+        
+        // 버튼 상태 초기화
+        let isLiked = UserDefaults.standard.bool(forKey: "\(item.title)_liked")
+        likeButton.isSelected = isLiked
+    }
+    
+    @objc func toggleLike() {
+        guard let item = item else { return }
+        
+        likeButton.isSelected.toggle()
+        
+        var selectedCount = UserDefaults.standard.integer(forKey: "selectedCount")
+        if likeButton.isSelected {
+            selectedCount += 1
+            UserDefaults.standard.set(true, forKey: "\(item.title)_liked")
+        } else {
+            selectedCount -= 1
+            UserDefaults.standard.set(false, forKey: "\(item.title)_liked")
+        }
+        
+        UserDefaults.standard.set(selectedCount, forKey: "selectedCount")
     }
 }

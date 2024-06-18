@@ -13,12 +13,10 @@ class SearchResultViewController: UIViewController {
     
     var searchTerm: String = ""
     var searchResults: [SearchResult] = []
-    var lastBuildDate: Date?
     var totalResults: Int = 0
     var currentPage = 1
     var isFetching = false
     var isEnd = false
-    
     let resultsCountLabel = UILabel()
     let sortStackView = UIStackView()
     let sortAccuracyButton = UIButton()
@@ -79,10 +77,10 @@ class SearchResultViewController: UIViewController {
         sortStackView.distribution = .fillEqually
         sortStackView.spacing = 6
         
-        configureButton(sortAccuracyButton, title: "정확도순")
-        configureButton(sortDateButton, title: "날짜순")
-        configureButton(sortPriceHighButton, title: "가격높은순")
-        configureButton(sortPriceLowButton, title: "가격낮은순")
+        configureButton(sortAccuracyButton, title: StringLiterals.ButtonTitle.sortAccuracy)
+        configureButton(sortDateButton, title: StringLiterals.ButtonTitle.sortDate)
+        configureButton(sortPriceHighButton, title: StringLiterals.ButtonTitle.sortPriceHigh)
+        configureButton(sortPriceLowButton, title: StringLiterals.ButtonTitle.sortPriceLow)
         
         sortAccuracyButton.addTarget(self, action: #selector(sortByAccuracy), for: .touchUpInside)
         sortDateButton.addTarget(self, action: #selector(sortByDate), for: .touchUpInside)
@@ -96,7 +94,7 @@ class SearchResultViewController: UIViewController {
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 1
-        button.layer.borderColor = Colors.darkGray.cgColor
+        button.layer.borderColor = UIColor.darkGray.cgColor
     }
     
     func configureLayout() {
@@ -148,11 +146,6 @@ class SearchResultViewController: UIViewController {
                 self.totalResults = data.total
                 self.resultsCountLabel.text = "총 \(self.totalResults)개의 결과"
                 self.collectionView.reloadData()
-                
-                let formatter = DateFormatter()
-                formatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss Z"
-                self.lastBuildDate = formatter.date(from: data.lastBuildDate)
-                
             case .failure(let error):
                 print("Error fetching search results: \(error)")
             }
@@ -160,26 +153,50 @@ class SearchResultViewController: UIViewController {
     }
     
     @objc func sortByAccuracy() {
-        self.totalResults = 0
+        resetButtonColors()
+        toggleButtonAppearance(button: sortAccuracyButton)
         self.currentPage = 1
         self.isFetching = false
         self.isEnd = false
+        self.searchResults.removeAll()
+        fetchSearchResults()
+    }
+
+    @objc func sortByDate() {
+        resetButtonColors()
+        toggleButtonAppearance(button: sortDateButton)
+        self.currentPage = 1
+        self.isFetching = false
+        self.isEnd = false
+        self.searchResults.removeAll()
         fetchSearchResults()
     }
     
-    @objc func sortByDate() {
-        searchResults.sort { $0.title > $1.title }
-        collectionView.reloadData()
-    }
-    
     @objc func sortByPriceHigh() {
+        resetButtonColors()
+        toggleButtonAppearance(button: sortPriceHighButton)
         searchResults.sort { Int($0.lprice) ?? 0 > Int($1.lprice) ?? 0 }
         collectionView.reloadData()
     }
     
     @objc func sortByPriceLow() {
+        resetButtonColors()
+        toggleButtonAppearance(button: sortPriceLowButton)
         searchResults.sort { Int($0.lprice) ?? 0 < Int($1.lprice) ?? 0 }
         collectionView.reloadData()
+    }
+    
+    func resetButtonColors() {
+        let buttons = [sortAccuracyButton, sortDateButton, sortPriceHighButton, sortPriceLowButton]
+        for button in buttons {
+            button.setTitleColor(.black, for: .normal)
+            button.backgroundColor = .white
+        }
+    }
+    
+    func toggleButtonAppearance(button: UIButton) {
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .black
     }
 }
 

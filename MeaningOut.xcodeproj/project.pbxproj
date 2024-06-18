@@ -35,6 +35,7 @@
 		017180292C202299003F060E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017180282C202299003F060E /* SettingViewController.swift */; };
 		0171802B2C208690003F060E /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0171802A2C208690003F060E /* ProfileCell.swift */; };
 		01FC70ED2C21601C00BC4326 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC70EC2C21601C00BC4326 /* UserDefaultsKey.swift */; };
+		01FC70EF2C2175FF00BC4326 /* MyLikedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC70EE2C2175FF00BC4326 /* MyLikedCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		017180282C202299003F060E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		0171802A2C208690003F060E /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		01FC70EC2C21601C00BC4326 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
+		01FC70EE2C2175FF00BC4326 /* MyLikedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLikedCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			children = (
 				017180282C202299003F060E /* SettingViewController.swift */,
 				0171802A2C208690003F060E /* ProfileCell.swift */,
+				01FC70EE2C2175FF00BC4326 /* MyLikedCell.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				0171802B2C208690003F060E /* ProfileCell.swift in Sources */,
 				016B9CE42C1B1E27009D2996 /* AppDelegate.swift in Sources */,
 				016B9D052C1B2A07009D2996 /* UIColor+HexCode.swift in Sources */,
+				01FC70EF2C2175FF00BC4326 /* MyLikedCell.swift in Sources */,
 				01717FF12C1F12DA003F060E /* SearchResult.swift in Sources */,
 				01FC70ED2C21601C00BC4326 /* UserDefaultsKey.swift in Sources */,
 				01717FED2C1D8732003F060E /* CoreDataManager.swift in Sources */,
