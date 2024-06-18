@@ -94,7 +94,6 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
                 if let appDomain = Bundle.main.bundleIdentifier {
                     UserDefaults.standard.removePersistentDomain(forName: appDomain)
                 }
-                
                 let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
                 let sceneDelegate = windowScene?.delegate as? SceneDelegate
                 let rootVC = OnboardingViewController()
@@ -102,10 +101,8 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
                 sceneDelegate?.window?.makeKeyAndVisible()
             }
             let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-            
             alert.addAction(confirmAction)
             alert.addAction(cancelAction)
-            
             present(alert, animated: true, completion: nil)
         }
         

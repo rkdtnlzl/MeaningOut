@@ -37,19 +37,17 @@ class ProfileImageModifyViewController: UIViewController, UICollectionViewDelega
     
     func configureUI() {
         view.backgroundColor = .white
-        
         profileImageView.contentMode = .scaleAspectFit
         profileImageView.layer.cornerRadius = 50
         profileImageView.layer.borderWidth = 5
         profileImageView.layer.borderColor = Colors.orange.cgColor
         profileImageView.clipsToBounds = true
+        
         let profileNumber = UserDefaults.standard.integer(forKey: "\(UserDefaultsKey.profileNumberKey)")
         profileImageView.image = UIImage(named: "profile_\(profileNumber)")
-        
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        
         collectionView.backgroundColor = .white
     }
     
@@ -59,7 +57,6 @@ class ProfileImageModifyViewController: UIViewController, UICollectionViewDelega
             make.centerX.equalTo(view.safeAreaLayoutGuide)
             make.width.height.equalTo(100)
         }
-        
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(profileImageView.snp.bottom).offset(20)
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
@@ -68,7 +65,6 @@ class ProfileImageModifyViewController: UIViewController, UICollectionViewDelega
     }
     
     func setTarget() {
-        
     }
     
     func layout() -> UICollectionViewLayout {
@@ -82,7 +78,6 @@ class ProfileImageModifyViewController: UIViewController, UICollectionViewDelega
     }
 }
 
-
 extension ProfileImageModifyViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -91,9 +86,7 @@ extension ProfileImageModifyViewController: UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        
         cell.contentView.subviews.forEach { $0.removeFromSuperview() }
-        
         let imageView = UIImageView(image: UIImage(named: imageNames[indexPath.item]))
         imageView.contentMode = .scaleAspectFit
         imageView.frame = cell.contentView.bounds
@@ -101,7 +94,6 @@ extension ProfileImageModifyViewController: UICollectionViewDelegate, UICollecti
         cell.contentView.addSubview(imageView)
         cell.layer.cornerRadius = 40
         cell.clipsToBounds = true
-        
         if selectedIndexPath == indexPath {
             cell.layer.borderColor = UIColor.orange.cgColor
             cell.layer.borderWidth = 5
@@ -111,7 +103,6 @@ extension ProfileImageModifyViewController: UICollectionViewDelegate, UICollecti
             cell.layer.borderWidth = 1
             cell.contentView.alpha = 0.5
         }
-        
         return cell
     }
     

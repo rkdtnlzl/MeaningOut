@@ -112,10 +112,8 @@ class ProfileNicknameModifyViewController: UIViewController {
     
     @objc func nicknameTextFieldDidChange(_ textField: UITextField) {
         guard let text = textField.text else { return }
-        
         let specialLiterals = CharacterSet(charactersIn: "@#$%")
         let numbers = CharacterSet.decimalDigits
-        
         if text.count < 2 || text.count > 9 {
             nicknameStatusLabel.text = StringLiterals.LabelText.NickNameStatus.numberCase
             saveButton.isEnabled = false

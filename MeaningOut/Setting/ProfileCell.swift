@@ -25,19 +25,19 @@ class ProfileCell: UITableViewCell {
     }
     
     func setupViews() {
+        contentView.addSubview(profileImageView)
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(joinDateLabel)
+        
         profileImageView.contentMode = .scaleAspectFit
         profileImageView.clipsToBounds = true
         profileImageView.layer.borderWidth = 5
         profileImageView.layer.borderColor = UIColor.orange.cgColor
         profileImageView.layer.cornerRadius = 33
-        contentView.addSubview(profileImageView)
-        
         nameLabel.font = .boldSystemFont(ofSize: 17)
-        contentView.addSubview(nameLabel)
-        
         joinDateLabel.font = .systemFont(ofSize: 14)
         joinDateLabel.textColor = .gray
-        contentView.addSubview(joinDateLabel)
+        
     }
     
     func setupConstraints() {

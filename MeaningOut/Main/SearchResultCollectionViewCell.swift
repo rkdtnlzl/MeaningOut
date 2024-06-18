@@ -88,7 +88,6 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
             imageView.kf.setImage(with: url)
         }
         
-        // 버튼 상태 초기화
         let isLiked = UserDefaults.standard.bool(forKey: "\(item.title)_liked")
         likeButton.isSelected = isLiked
     }

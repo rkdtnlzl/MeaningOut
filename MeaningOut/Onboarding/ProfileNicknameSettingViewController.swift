@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 class ProfileNicknameSettingViewController: UIViewController {
-    
     let profileImageView = UIImageView()
     let profileImageButton = UIButton()
     let nicknameTextField = UITextField()

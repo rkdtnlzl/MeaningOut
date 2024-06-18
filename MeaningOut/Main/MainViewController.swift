@@ -25,7 +25,6 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-//        configureNavigation()
         configureHierarchy()
         configureLayout()
         configureUI()
@@ -110,6 +109,7 @@ class MainViewController: UIViewController {
             make.leading.equalTo(headerView.snp.leading).inset(16)
             make.centerY.equalTo(headerView.snp.centerY)
         }
+        
         clearAllButton.snp.makeConstraints { make in
             make.trailing.equalTo(headerView.snp.trailing).inset(16)
             make.centerY.equalTo(headerView.snp.centerY)
@@ -119,10 +119,8 @@ class MainViewController: UIViewController {
     func fetchRecentSearches() {
         guard let context = context else { return }
         let fetchRequest: NSFetchRequest<Entity> = Entity.fetchRequest()
-        
         let dateSort = NSSortDescriptor(key: "date", ascending: false)
         fetchRequest.sortDescriptors = [dateSort]
-        
         do {
             recentSearches = try context.fetch(fetchRequest)
             updateUI()
@@ -133,7 +131,6 @@ class MainViewController: UIViewController {
     
     func delete<T: NSManagedObject>(at index: Int, request: NSFetchRequest<T>) -> Bool {
         request.predicate = NSPredicate(format: "index = %@", NSNumber(value: index))
-        
         do {
             if let recentTerms = try context?.fetch(request) {
                 if recentTerms.count == 0 { return false }
@@ -145,7 +142,6 @@ class MainViewController: UIViewController {
             print(error.localizedDescription)
             return false
         }
-        
         return false
     }
     
@@ -162,7 +158,6 @@ class MainViewController: UIViewController {
             print(error.localizedDescription)
             return false
         }
-        
         return false
     }
     
@@ -170,13 +165,10 @@ class MainViewController: UIViewController {
         guard let context = self.context,
               let entity = NSEntityDescription.entity(forEntityName: "Entity", in: context)
         else { return }
-        
         guard let recentTerms = NSManagedObject(entity: entity, insertInto: context) as? Entity else { return }
-        
         recentTerms.term = term
         recentTerms.date = date
         recentTerms.index = index
-        
         do {
             try context.save()
             fetchRecentSearches()
@@ -247,14 +239,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         deleteButton.tag = indexPath.row
         deleteButton.addTarget(self, action: #selector(deleteRecentSearch(_:)), for: .touchUpInside)
         cell.accessoryView = deleteButton
-        
         return cell
     }
     
     @objc func deleteRecentSearch(_ sender: UIButton) {
         let index = sender.tag
         let searchTermToDelete = recentSearches[index]
-        
         let fetchRequest: NSFetchRequest<Entity> = Entity.fetchRequest()
         if delete(at: Int(searchTermToDelete.index), request: fetchRequest) {
             recentSearches.remove(at: index)
