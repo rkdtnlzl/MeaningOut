@@ -29,7 +29,7 @@ class MyLikedCell: UITableViewCell {
         contentView.addSubview(likedImageView)
         contentView.addSubview(likedCountLabel)
         
-        titleLabel.font = .systemFont(ofSize: 15)
+        titleLabel.font = .systemFont(ofSize: 17)
         titleLabel.text = "나의 장바구니 목록"
         titleLabel.textColor = .black
         
@@ -43,7 +43,7 @@ class MyLikedCell: UITableViewCell {
     
     func setupConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(15)
+            make.leading.equalToSuperview().offset(20)
             make.centerY.equalToSuperview()
         }
         
