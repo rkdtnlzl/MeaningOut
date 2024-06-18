@@ -68,7 +68,8 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             let nickname = UserDefaults.standard.string(forKey: "\(UserDefaultsKey.nicknameKey)") ?? ""
             let profileNumber = UserDefaults.standard.integer(forKey: "\(UserDefaultsKey.profileNumberKey)")
             let profileImage = UIImage(named: "profile_\(profileNumber)")
-            cell.configure(nickname: nickname, joinDate: "2024.06.15 가입", profileImage: profileImage)
+            let joinDateLabel = UserDefaults.standard.string(forKey: UserDefaultsKey.joinDateKey) ?? ""
+            cell.configure(nickname: nickname, joinDate: "\(joinDateLabel) 가입", profileImage: profileImage)
             cell.accessoryType = .disclosureIndicator
             return cell
         } else if indexPath.row == 1{
@@ -96,7 +97,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
                 }
                 let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
                 let sceneDelegate = windowScene?.delegate as? SceneDelegate
-                let rootVC = OnboardingViewController()
+                let rootVC = UINavigationController(rootViewController: OnboardingViewController())
                 sceneDelegate?.window?.rootViewController = rootVC
                 sceneDelegate?.window?.makeKeyAndVisible()
             }

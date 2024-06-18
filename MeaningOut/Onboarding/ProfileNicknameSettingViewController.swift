@@ -154,6 +154,12 @@ class ProfileNicknameSettingViewController: UIViewController {
         UserDefaults.standard.set(nicknameTextField.text, forKey: "\(UserDefaultsKey.nicknameKey)")
         UserDefaults.standard.set(true, forKey: "\(UserDefaultsKey.isUserKey)")
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        let currentDate = dateFormatter.string(from: Date())
+        UserDefaults.standard.set(currentDate, forKey: "\(UserDefaultsKey.joinDateKey)")
+        
+        
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate
         let rootVC = TabBarController()
