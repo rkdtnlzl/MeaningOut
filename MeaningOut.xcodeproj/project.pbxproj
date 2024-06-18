@@ -36,6 +36,8 @@
 		0171802B2C208690003F060E /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0171802A2C208690003F060E /* ProfileCell.swift */; };
 		01FC70ED2C21601C00BC4326 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC70EC2C21601C00BC4326 /* UserDefaultsKey.swift */; };
 		01FC70EF2C2175FF00BC4326 /* MyLikedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC70EE2C2175FF00BC4326 /* MyLikedCell.swift */; };
+		01FC70F12C217F7300BC4326 /* ProfileNicknameModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC70F02C217F7300BC4326 /* ProfileNicknameModifyViewController.swift */; };
+		01FC70F32C21801600BC4326 /* ProfileImageModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC70F22C21801600BC4326 /* ProfileImageModifyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +69,8 @@
 		0171802A2C208690003F060E /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		01FC70EC2C21601C00BC4326 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		01FC70EE2C2175FF00BC4326 /* MyLikedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLikedCell.swift; sourceTree = "<group>"; };
+		01FC70F02C217F7300BC4326 /* ProfileNicknameModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNicknameModifyViewController.swift; sourceTree = "<group>"; };
+		01FC70F22C21801600BC4326 /* ProfileImageModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageModifyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +181,8 @@
 				017180282C202299003F060E /* SettingViewController.swift */,
 				0171802A2C208690003F060E /* ProfileCell.swift */,
 				01FC70EE2C2175FF00BC4326 /* MyLikedCell.swift */,
+				01FC70F02C217F7300BC4326 /* ProfileNicknameModifyViewController.swift */,
+				01FC70F22C21801600BC4326 /* ProfileImageModifyViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -280,11 +286,13 @@
 				017180242C201843003F060E /* SearchResultDetailViewController.swift in Sources */,
 				017180262C2021ED003F060E /* TabBarViewController.swift in Sources */,
 				01717FEB2C1D86F9003F060E /* Entity+CoreDataProperties.swift in Sources */,
+				01FC70F12C217F7300BC4326 /* ProfileNicknameModifyViewController.swift in Sources */,
 				017180292C202299003F060E /* SettingViewController.swift in Sources */,
 				01717FE42C1D7869003F060E /* MainViewController.swift in Sources */,
 				016B9CE62C1B1E27009D2996 /* SceneDelegate.swift in Sources */,
 				016B9D0A2C1B2E85009D2996 /* ProfileNicknameSettingViewController.swift in Sources */,
 				01717FF52C1F2C05003F060E /* APIKey.swift in Sources */,
+				01FC70F32C21801600BC4326 /* ProfileImageModifyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
