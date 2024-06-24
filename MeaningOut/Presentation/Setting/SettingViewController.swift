@@ -90,8 +90,9 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             let vc = ProfileNicknameModifyViewController()
             navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.row == list.count {
-            let alert = UIAlertController(title: StringLiterals.AlertLabel.alertTitle, message: StringLiterals.AlertLabel.alertMessage, preferredStyle: .alert)
-            let confirmAction = UIAlertAction(title: "확인", style: .destructive) { _ in
+            showAlert(title: StringLiterals.AlertLabel.alertTitle,
+                      message: StringLiterals.AlertLabel.alertMessage,
+                      ok: "확인") { _ in
                 if let appDomain = Bundle.main.bundleIdentifier {
                     UserDefaults.standard.removePersistentDomain(forName: appDomain)
                 }
@@ -101,10 +102,6 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
                 sceneDelegate?.window?.rootViewController = rootVC
                 sceneDelegate?.window?.makeKeyAndVisible()
             }
-            let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-            alert.addAction(confirmAction)
-            alert.addAction(cancelAction)
-            present(alert, animated: true, completion: nil)
         }
         
     }
