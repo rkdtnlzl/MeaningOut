@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Alamofire
 
-class SearchResultViewController: UIViewController {
+class SearchResultViewController: BaseViewController {
     
     var searchTerm: String = ""
     var searchResults: [SearchResult] = []
@@ -35,9 +35,6 @@ class SearchResultViewController: UIViewController {
         super.viewDidLoad()
         
         configureNavigation()
-        configureHierarchy()
-        configureLayout()
-        configureUI()
         configureCollectionView()
         fetchSearchResults()
     }
@@ -55,7 +52,7 @@ class SearchResultViewController: UIViewController {
         navigationItem.title = "\(searchTerm)"
     }
     
-    func configureHierarchy() {
+    override func configureHierarchy() {
         view.addSubview(resultsCountLabel)
         view.addSubview(sortStackView)
         view.addSubview(collectionView)
@@ -66,7 +63,7 @@ class SearchResultViewController: UIViewController {
         sortStackView.addArrangedSubview(sortPriceLowButton)
     }
     
-    func configureUI() {
+    override func configureView() {
         view.backgroundColor = .white
         
         resultsCountLabel.textAlignment = .center
@@ -97,7 +94,7 @@ class SearchResultViewController: UIViewController {
         button.layer.borderColor = UIColor.darkGray.cgColor
     }
     
-    func configureLayout() {
+    override func configureLayout() {
         resultsCountLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(10)
             make.leading.equalTo(view.safeAreaLayoutGuide).inset(20)
@@ -126,7 +123,7 @@ class SearchResultViewController: UIViewController {
         guard !isFetching && !isEnd else { return }
         isFetching = true
         
-        let url = APIURL.naverSearchURI
+        let url = APIURL.naverSearchURL
         let parameters: [String: String] = [
             "query": searchTerm,
             "display": "10",

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class OnboardingViewController: UIViewController {
+class OnboardingViewController: BaseViewController {
     let onboardingTitleLabel = UILabel()
     let onboardingTitleImageView = UIImageView()
     let startButton = UIButton()
@@ -16,19 +16,16 @@ class OnboardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureHierarchy()
-        configureLayout()
-        configureUI()
         setTarget()
     }
     
-    func configureHierarchy() {
+    override func configureHierarchy() {
         view.addSubview(onboardingTitleLabel)
         view.addSubview(onboardingTitleImageView)
         view.addSubview(startButton)
     }
     
-    func configureUI() {
+    override func configureView() {
         view.backgroundColor = .white
         
         onboardingTitleLabel.text = StringLiterals.LabelText.onboardingTitle
@@ -46,7 +43,7 @@ class OnboardingViewController: UIViewController {
         startButton.layer.cornerRadius = 20
     }
     
-    func configureLayout() {
+    override func configureLayout() {
         onboardingTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).inset(50)
             make.centerX.equalTo(view.safeAreaLayoutGuide)

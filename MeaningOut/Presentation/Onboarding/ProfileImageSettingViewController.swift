@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileImageSettingViewController: UIViewController, UICollectionViewDelegateFlowLayout {
+class ProfileImageSettingViewController: BaseViewController, UICollectionViewDelegateFlowLayout {
     
     let profileImageView = UIImageView()
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
@@ -19,22 +19,18 @@ class ProfileImageSettingViewController: UIViewController, UICollectionViewDeleg
         super.viewDidLoad()
         
         configureNavigation()
-        configureHierarchy()
-        configureLayout()
-        configureUI()
-        setTarget()
     }
     
     func configureNavigation() {
         navigationItem.title = StringLiterals.NavigationTitle.profileSetting
     }
     
-    func configureHierarchy() {
+    override func configureHierarchy() {
         view.addSubview(profileImageView)
         view.addSubview(collectionView)
     }
     
-    func configureUI() {
+    override func configureView() {
         view.backgroundColor = .white
         
         profileImageView.contentMode = .scaleAspectFit
@@ -52,7 +48,7 @@ class ProfileImageSettingViewController: UIViewController, UICollectionViewDeleg
         collectionView.backgroundColor = .white
     }
     
-    func configureLayout() {
+    override func configureLayout() {
         profileImageView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             make.centerX.equalTo(view.safeAreaLayoutGuide)
@@ -64,10 +60,6 @@ class ProfileImageSettingViewController: UIViewController, UICollectionViewDeleg
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
         }
-    }
-    
-    func setTarget() {
-        
     }
     
     func layout() -> UICollectionViewLayout {

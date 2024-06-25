@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ProfileNicknameSettingViewController: UIViewController {
+class ProfileNicknameSettingViewController: BaseViewController {
     let profileImageView = UIImageView()
     let profileImageButton = UIButton()
     let nicknameTextField = UITextField()
@@ -27,9 +27,6 @@ class ProfileNicknameSettingViewController: UIViewController {
         super.viewDidLoad()
         
         configureNavigation()
-        configureHierarchy()
-        configureLayout()
-        configureUI()
         setTarget()
     }
     
@@ -37,7 +34,7 @@ class ProfileNicknameSettingViewController: UIViewController {
         navigationItem.title = StringLiterals.NavigationTitle.profileSetting
     }
     
-    func configureHierarchy() {
+    override func configureHierarchy() {
         view.addSubview(profileImageView)
         view.addSubview(profileImageButton)
         view.addSubview(nicknameTextField)
@@ -46,7 +43,7 @@ class ProfileNicknameSettingViewController: UIViewController {
         view.addSubview(completeButton)
     }
     
-    func configureUI() {
+    override func configureView() {
         view.backgroundColor = .white
         
         profileImageView.image = UIImage(named: "profile_1")
@@ -78,7 +75,7 @@ class ProfileNicknameSettingViewController: UIViewController {
         completeButton.isEnabled = false
     }
     
-    func configureLayout() {
+    override func configureLayout() {
         profileImageView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).inset(20)
             make.centerX.equalTo(view.safeAreaLayoutGuide)

@@ -11,7 +11,7 @@ import SnapKit
 import UIKit
 import SnapKit
 
-class SettingViewController: UIViewController {
+class SettingViewController: BaseViewController {
     
     let tableView = UITableView()
     
@@ -21,7 +21,6 @@ class SettingViewController: UIViewController {
         super.viewDidLoad()
         
         configureNavigation()
-        configureUI()
         configureTableView()
     }
     
@@ -35,7 +34,7 @@ class SettingViewController: UIViewController {
         navigationItem.title = StringLiterals.NavigationTitle.Setting
     }
     
-    func configureUI() {
+    override func configureView() {
         view.backgroundColor = .white
     }
     

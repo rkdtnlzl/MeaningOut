@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class MainViewController: UIViewController {
+class MainViewController: BaseViewController {
     
     let searchBar = UISearchBar()
     let searchTableView = UITableView()
@@ -25,9 +25,6 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        configureHierarchy()
-        configureLayout()
-        configureUI()
         fetchRecentSearches()
     }
     
@@ -42,7 +39,7 @@ class MainViewController: UIViewController {
         navigationItem.title = "\(nickname)'s Meaning Out"
     }
     
-    func configureHierarchy() {
+    override func configureHierarchy() {
         view.addSubview(searchBar)
         view.addSubview(searchTableView)
         view.addSubview(noSearchLabel)
@@ -54,7 +51,7 @@ class MainViewController: UIViewController {
         searchTableView.tableHeaderView = headerView
     }
     
-    func configureUI() {
+    override func configureView() {
         view.backgroundColor = .white
         
         searchBar.delegate = self
@@ -81,7 +78,7 @@ class MainViewController: UIViewController {
         clearAllButton.addTarget(self, action: #selector(clearAllSearches), for: .touchUpInside)
     }
     
-    func configureLayout() {
+    override func configureLayout() {
         searchBar.snp.makeConstraints { make in
             make.horizontalEdges.top.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(44)

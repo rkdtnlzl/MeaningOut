@@ -9,7 +9,7 @@ import UIKit
 import WebKit
 import SnapKit
 
-class SearchResultDetailViewController: UIViewController {
+class SearchResultDetailViewController: BaseViewController {
     
     var urlString: String?
     let webView = WKWebView()
@@ -18,7 +18,6 @@ class SearchResultDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        configureLayout()
         configureNavigation()
         loadURL()
     }
@@ -29,7 +28,7 @@ class SearchResultDetailViewController: UIViewController {
         navigationItem.rightBarButtonItem = likedButton
     }
     
-    func configureLayout() {
+    override func configureLayout() {
         view.addSubview(webView)
         webView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
