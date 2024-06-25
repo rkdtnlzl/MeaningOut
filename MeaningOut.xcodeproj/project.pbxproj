@@ -35,6 +35,9 @@
 		017180292C202299003F060E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017180282C202299003F060E /* SettingViewController.swift */; };
 		0171802B2C208690003F060E /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0171802A2C208690003F060E /* ProfileCell.swift */; };
 		01C361F82C293D8600D8ED61 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C361F72C293D8600D8ED61 /* UIViewController+.swift */; };
+		01C362462C2B042700D8ED61 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C362452C2B042700D8ED61 /* BaseViewController.swift */; };
+		01C362482C2B043D00D8ED61 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C362472C2B043D00D8ED61 /* BaseView.swift */; };
+		01C3624A2C2B044F00D8ED61 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C362492C2B044F00D8ED61 /* BaseTableViewCell.swift */; };
 		01FC70ED2C21601C00BC4326 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC70EC2C21601C00BC4326 /* UserDefaultsKey.swift */; };
 		01FC70EF2C2175FF00BC4326 /* MyLikedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC70EE2C2175FF00BC4326 /* MyLikedCell.swift */; };
 		01FC70F12C217F7300BC4326 /* ProfileNicknameModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC70F02C217F7300BC4326 /* ProfileNicknameModifyViewController.swift */; };
@@ -69,6 +72,9 @@
 		017180282C202299003F060E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		0171802A2C208690003F060E /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		01C361F72C293D8600D8ED61 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		01C362452C2B042700D8ED61 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		01C362472C2B043D00D8ED61 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		01C362492C2B044F00D8ED61 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		01FC70EC2C21601C00BC4326 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		01FC70EE2C2175FF00BC4326 /* MyLikedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLikedCell.swift; sourceTree = "<group>"; };
 		01FC70F02C217F7300BC4326 /* ProfileNicknameModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNicknameModifyViewController.swift; sourceTree = "<group>"; };
@@ -111,10 +117,10 @@
 		016B9CE22C1B1E27009D2996 /* MeaningOut */ = {
 			isa = PBXGroup;
 			children = (
+				01C362432C2B03F000D8ED61 /* Global */,
 				01C361D12C2829EA00D8ED61 /* Presentation */,
 				01717FF72C1F3A76003F060E /* CoreData */,
 				01717FF62C1F39BF003F060E /* Application */,
-				016B9D062C1B2A69009D2996 /* Extension */,
 				016B9CEC2C1B1E29009D2996 /* Assets.xcassets */,
 				016B9CEE2C1B1E29009D2996 /* LaunchScreen.storyboard */,
 				016B9CF12C1B1E29009D2996 /* Info.plist */,
@@ -196,6 +202,25 @@
 				017180272C202282003F060E /* Setting */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		01C362432C2B03F000D8ED61 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				01C362442C2B040000D8ED61 /* Base */,
+				016B9D062C1B2A69009D2996 /* Extension */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		01C362442C2B040000D8ED61 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				01C362452C2B042700D8ED61 /* BaseViewController.swift */,
+				01C362472C2B043D00D8ED61 /* BaseView.swift */,
+				01C362492C2B044F00D8ED61 /* BaseTableViewCell.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,13 +307,16 @@
 				016B9D082C1B2B45009D2996 /* StringLiterals.swift in Sources */,
 				016B9CE82C1B1E27009D2996 /* OnboardingViewController.swift in Sources */,
 				01717FF32C1F14C8003F060E /* SearchResultCollectionViewCell.swift in Sources */,
+				01C3624A2C2B044F00D8ED61 /* BaseTableViewCell.swift in Sources */,
 				016B9D032C1B2965009D2996 /* Colors.swift in Sources */,
 				01717FDF2C1D62EE003F060E /* ProfileImageSettingViewController.swift in Sources */,
+				01C362462C2B042700D8ED61 /* BaseViewController.swift in Sources */,
 				01717FE72C1D860D003F060E /* RecentSearchModel.xcdatamodeld in Sources */,
 				0171802B2C208690003F060E /* ProfileCell.swift in Sources */,
 				016B9CE42C1B1E27009D2996 /* AppDelegate.swift in Sources */,
 				016B9D052C1B2A07009D2996 /* UIColor+HexCode.swift in Sources */,
 				01FC70EF2C2175FF00BC4326 /* MyLikedCell.swift in Sources */,
+				01C362482C2B043D00D8ED61 /* BaseView.swift in Sources */,
 				01717FF12C1F12DA003F060E /* SearchResult.swift in Sources */,
 				01FC70ED2C21601C00BC4326 /* UserDefaultsKey.swift in Sources */,
 				01717FED2C1D8732003F060E /* CoreDataManager.swift in Sources */,
