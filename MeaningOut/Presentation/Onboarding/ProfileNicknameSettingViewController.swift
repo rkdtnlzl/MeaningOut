@@ -125,6 +125,8 @@ class ProfileNicknameSettingViewController: BaseViewController {
         
         if text.count < 2 || text.count > 9 {
             nicknameStatusLabel.text = StringLiterals.LabelText.NickNameStatus.numberCase
+            completeButton.backgroundColor = Colors.gray
+            completeButton.isEnabled = false
         } else if text.rangeOfCharacter(from: specialLiterals) != nil {
             nicknameStatusLabel.text = StringLiterals.LabelText.NickNameStatus.specialLiteralsCase
             completeButton.backgroundColor = Colors.gray
