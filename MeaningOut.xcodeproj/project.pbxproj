@@ -25,7 +25,6 @@
 		01717FE72C1D860D003F060E /* RecentSearchModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 01717FE52C1D860D003F060E /* RecentSearchModel.xcdatamodeld */; };
 		01717FEA2C1D86F9003F060E /* Entity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01717FE82C1D86F9003F060E /* Entity+CoreDataClass.swift */; };
 		01717FEB2C1D86F9003F060E /* Entity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01717FE92C1D86F9003F060E /* Entity+CoreDataProperties.swift */; };
-		01717FED2C1D8732003F060E /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01717FEC2C1D8732003F060E /* CoreDataManager.swift */; };
 		01717FEF2C1EDB25003F060E /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01717FEE2C1EDB25003F060E /* SearchResultViewController.swift */; };
 		01717FF12C1F12DA003F060E /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01717FF02C1F12DA003F060E /* SearchResult.swift */; };
 		01717FF32C1F14C8003F060E /* SearchResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01717FF22C1F14C8003F060E /* SearchResultCollectionViewCell.swift */; };
@@ -64,7 +63,6 @@
 		01717FE62C1D860D003F060E /* RecentSearchModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecentSearchModel.xcdatamodel; sourceTree = "<group>"; };
 		01717FE82C1D86F9003F060E /* Entity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		01717FE92C1D86F9003F060E /* Entity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		01717FEC2C1D8732003F060E /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		01717FEE2C1EDB25003F060E /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		01717FF02C1F12DA003F060E /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		01717FF22C1F14C8003F060E /* SearchResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -182,7 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				01717FE52C1D860D003F060E /* RecentSearchModel.xcdatamodeld */,
-				01717FEC2C1D8732003F060E /* CoreDataManager.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -334,7 +331,6 @@
 				01717FF12C1F12DA003F060E /* SearchResult.swift in Sources */,
 				01FC70ED2C21601C00BC4326 /* UserDefaultsKey.swift in Sources */,
 				01C3625B2C2C530600D8ED61 /* MeaningOutAPI.swift in Sources */,
-				01717FED2C1D8732003F060E /* CoreDataManager.swift in Sources */,
 				01717FEF2C1EDB25003F060E /* SearchResultViewController.swift in Sources */,
 				01717FEA2C1D86F9003F060E /* Entity+CoreDataClass.swift in Sources */,
 				017180242C201843003F060E /* SearchResultDetailViewController.swift in Sources */,
