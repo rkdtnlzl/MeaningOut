@@ -39,6 +39,8 @@
 		01C3624A2C2B044F00D8ED61 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C362492C2B044F00D8ED61 /* BaseTableViewCell.swift */; };
 		01C3625B2C2C530600D8ED61 /* MeaningOutAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3625A2C2C530600D8ED61 /* MeaningOutAPI.swift */; };
 		01C3625D2C2C53DB00D8ED61 /* MeaningOutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3625C2C2C53DB00D8ED61 /* MeaningOutRequest.swift */; };
+		01C362662C2E7D9700D8ED61 /* NicknameValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C362652C2E7D9700D8ED61 /* NicknameValidationResult.swift */; };
+		01C362682C2E7DBF00D8ED61 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C362672C2E7DBF00D8ED61 /* String+.swift */; };
 		01FC70ED2C21601C00BC4326 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC70EC2C21601C00BC4326 /* UserDefaultsKey.swift */; };
 		01FC70EF2C2175FF00BC4326 /* MyLikedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC70EE2C2175FF00BC4326 /* MyLikedCell.swift */; };
 		01FC70F12C217F7300BC4326 /* ProfileNicknameModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC70F02C217F7300BC4326 /* ProfileNicknameModifyViewController.swift */; };
@@ -77,6 +79,8 @@
 		01C362492C2B044F00D8ED61 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		01C3625A2C2C530600D8ED61 /* MeaningOutAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeaningOutAPI.swift; sourceTree = "<group>"; };
 		01C3625C2C2C53DB00D8ED61 /* MeaningOutRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeaningOutRequest.swift; sourceTree = "<group>"; };
+		01C362652C2E7D9700D8ED61 /* NicknameValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameValidationResult.swift; sourceTree = "<group>"; };
+		01C362672C2E7DBF00D8ED61 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		01FC70EC2C21601C00BC4326 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		01FC70EE2C2175FF00BC4326 /* MyLikedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLikedCell.swift; sourceTree = "<group>"; };
 		01FC70F02C217F7300BC4326 /* ProfileNicknameModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNicknameModifyViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 				016B9D042C1B2A07009D2996 /* UIColor+HexCode.swift */,
 				016B9D072C1B2B45009D2996 /* StringLiterals.swift */,
 				01C361F72C293D8600D8ED61 /* UIViewController+.swift */,
+				01C362672C2E7DBF00D8ED61 /* String+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -209,6 +214,7 @@
 		01C362432C2B03F000D8ED61 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				01C362642C2E7D8300D8ED61 /* Enum */,
 				01C362442C2B040000D8ED61 /* Base */,
 				016B9D062C1B2A69009D2996 /* Extension */,
 			);
@@ -232,6 +238,14 @@
 				01C3625C2C2C53DB00D8ED61 /* MeaningOutRequest.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		01C362642C2E7D8300D8ED61 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				01C362652C2E7D9700D8ED61 /* NicknameValidationResult.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,6 +339,7 @@
 				01717FE72C1D860D003F060E /* RecentSearchModel.xcdatamodeld in Sources */,
 				0171802B2C208690003F060E /* ProfileCell.swift in Sources */,
 				016B9CE42C1B1E27009D2996 /* AppDelegate.swift in Sources */,
+				01C362682C2E7DBF00D8ED61 /* String+.swift in Sources */,
 				016B9D052C1B2A07009D2996 /* UIColor+HexCode.swift in Sources */,
 				01FC70EF2C2175FF00BC4326 /* MyLikedCell.swift in Sources */,
 				01C362482C2B043D00D8ED61 /* BaseView.swift in Sources */,
@@ -345,6 +360,7 @@
 				016B9D0A2C1B2E85009D2996 /* ProfileNicknameSettingViewController.swift in Sources */,
 				01717FF52C1F2C05003F060E /* APIKey.swift in Sources */,
 				01FC70F32C21801600BC4326 /* ProfileImageModifyViewController.swift in Sources */,
+				01C362662C2E7D9700D8ED61 /* NicknameValidationResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
