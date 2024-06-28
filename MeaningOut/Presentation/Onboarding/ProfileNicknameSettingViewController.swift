@@ -120,26 +120,11 @@ class ProfileNicknameSettingViewController: BaseViewController {
     @objc func nicknameTextFieldDidChange(_ textField: UITextField) {
         guard let text = textField.text else { return }
         
-        let specialLiterals = CharacterSet(charactersIn: "@#$%")
-        let numbers = CharacterSet.decimalDigits
+        let validationResult = text.validateNickname()
         
-        if text.count < 2 || text.count > 9 {
-            nicknameStatusLabel.text = StringLiterals.LabelText.NickNameStatus.numberCase
-            completeButton.backgroundColor = Colors.gray
-            completeButton.isEnabled = false
-        } else if text.rangeOfCharacter(from: specialLiterals) != nil {
-            nicknameStatusLabel.text = StringLiterals.LabelText.NickNameStatus.specialLiteralsCase
-            completeButton.backgroundColor = Colors.gray
-            completeButton.isEnabled = false
-        } else if text.rangeOfCharacter(from: numbers) != nil {
-            nicknameStatusLabel.text = StringLiterals.LabelText.NickNameStatus.numberOfLiteralsCase
-            completeButton.backgroundColor = Colors.gray
-            completeButton.isEnabled = false
-        } else {
-            nicknameStatusLabel.text = StringLiterals.LabelText.NickNameStatus.rightCase
-            completeButton.backgroundColor = Colors.orange
-            completeButton.isEnabled = true
-        }
+        nicknameStatusLabel.text = validationResult.message
+        completeButton.backgroundColor = validationResult.isValid ? Colors.orange : Colors.gray
+        completeButton.isEnabled = validationResult.isValid
     }
     
     @objc func profileImageButtonClicked() {
