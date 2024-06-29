@@ -41,6 +41,7 @@
 		01C3625D2C2C53DB00D8ED61 /* MeaningOutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3625C2C2C53DB00D8ED61 /* MeaningOutRequest.swift */; };
 		01C362662C2E7D9700D8ED61 /* NicknameValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C362652C2E7D9700D8ED61 /* NicknameValidationResult.swift */; };
 		01C362682C2E7DBF00D8ED61 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C362672C2E7DBF00D8ED61 /* String+.swift */; };
+		01C3626A2C30590E00D8ED61 /* UICollectionViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C362692C30590E00D8ED61 /* UICollectionViewCell+.swift */; };
 		01FC70ED2C21601C00BC4326 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC70EC2C21601C00BC4326 /* UserDefaultsKey.swift */; };
 		01FC70EF2C2175FF00BC4326 /* MyLikedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC70EE2C2175FF00BC4326 /* MyLikedCell.swift */; };
 		01FC70F12C217F7300BC4326 /* ProfileNicknameModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC70F02C217F7300BC4326 /* ProfileNicknameModifyViewController.swift */; };
@@ -81,6 +82,7 @@
 		01C3625C2C2C53DB00D8ED61 /* MeaningOutRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeaningOutRequest.swift; sourceTree = "<group>"; };
 		01C362652C2E7D9700D8ED61 /* NicknameValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameValidationResult.swift; sourceTree = "<group>"; };
 		01C362672C2E7DBF00D8ED61 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		01C362692C30590E00D8ED61 /* UICollectionViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+.swift"; sourceTree = "<group>"; };
 		01FC70EC2C21601C00BC4326 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		01FC70EE2C2175FF00BC4326 /* MyLikedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLikedCell.swift; sourceTree = "<group>"; };
 		01FC70F02C217F7300BC4326 /* ProfileNicknameModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNicknameModifyViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				016B9D072C1B2B45009D2996 /* StringLiterals.swift */,
 				01C361F72C293D8600D8ED61 /* UIViewController+.swift */,
 				01C362672C2E7DBF00D8ED61 /* String+.swift */,
+				01C362692C30590E00D8ED61 /* UICollectionViewCell+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				017180262C2021ED003F060E /* TabBarViewController.swift in Sources */,
 				01717FEB2C1D86F9003F060E /* Entity+CoreDataProperties.swift in Sources */,
 				01FC70F12C217F7300BC4326 /* ProfileNicknameModifyViewController.swift in Sources */,
+				01C3626A2C30590E00D8ED61 /* UICollectionViewCell+.swift in Sources */,
 				017180292C202299003F060E /* SettingViewController.swift in Sources */,
 				01717FE42C1D7869003F060E /* MainViewController.swift in Sources */,
 				016B9CE62C1B1E27009D2996 /* SceneDelegate.swift in Sources */,
