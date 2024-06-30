@@ -15,7 +15,7 @@ class MeaningOutAPI {
     private init() { }
     
     func fetchSearchResults(query: String, page: Int, completion: @escaping (Result<SearchResponse, AFError>) -> Void) {
-        var request = TMDBRequest.meaningOut
+        var request = TMDBRequest.meaningOutSearch
         var parameters = request.parameters
         parameters["query"] = query
         parameters["display"] = "10"

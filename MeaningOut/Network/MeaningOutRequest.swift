@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 
 enum TMDBRequest {
-    case meaningOut
+    case meaningOutSearch
     
     var baseURL: String {
         return APIURL.naverSearchURL
@@ -17,7 +17,7 @@ enum TMDBRequest {
     
     var endpoint: String {
         switch self {
-        case .meaningOut:
+        case .meaningOutSearch:
             return baseURL
         }
     }
