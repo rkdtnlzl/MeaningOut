@@ -14,4 +14,16 @@ class MeaningOutAPI {
     
     private init() { }
     
+    func fetchSearchResults(query: String, page: Int, completion: @escaping (Result<SearchResponse, AFError>) -> Void) {
+        var request = TMDBRequest.meaningOut
+        var parameters = request.parameters
+        parameters["query"] = query
+        parameters["display"] = "10"
+        parameters["start"] = "\(page)"
+        
+        AF.request(request.endpoint, parameters: parameters, headers: request.headers)
+            .responseDecodable(of: SearchResponse.self) { response in
+                completion(response.result)
+            }
+    }
 }
