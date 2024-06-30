@@ -123,20 +123,9 @@ class SearchResultViewController: BaseViewController {
         guard !isFetching && !isEnd else { return }
         isFetching = true
         
-        let url = APIURL.naverSearchURL
-        let parameters: [String: String] = [
-            "query": searchTerm,
-            "display": "10",
-            "start": "\(currentPage)"
-        ]
-        let headers: HTTPHeaders = [
-            "X-Naver-Client-Id": "\(APIKey.naverID)",
-            "X-Naver-Client-Secret": "\(APIKey.naverSecret)"
-        ]
-        
-        AF.request(url, parameters: parameters, headers: headers).responseDecodable(of: SearchResponse.self) { response in
+        MeaningOutAPI.shared.fetchSearchResults(query: searchTerm, page: currentPage) { result in
             self.isFetching = false
-            switch response.result {
+            switch result {
             case .success(let data):
                 self.searchResults.append(contentsOf: data.items)
                 self.isEnd = data.items.isEmpty
