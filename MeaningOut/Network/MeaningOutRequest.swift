@@ -18,17 +18,19 @@ enum TMDBRequest {
     var endpoint: String {
         switch self {
         case .meaningOut:
-            return "\(baseURL)"
+            return baseURL
         }
     }
     
     var headers: HTTPHeaders {
         return [
-            "accept": "application/json"
+            "accept": "application/json",
+            "X-Naver-Client-Id": APIKey.naverID,
+            "X-Naver-Client-Secret": APIKey.naverSecret
         ]
     }
     
     var parameters: Parameters {
-        return ["api_key": APIKey.naverID]
+        return [:]
     }
 }
