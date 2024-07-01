@@ -36,7 +36,7 @@ class SearchResultViewController: BaseViewController {
         
         configureNavigation()
         configureCollectionView()
-        fetchSearchResults()
+        fetchSearchResultsWithURLSession()
     }
     
     func layout() -> UICollectionViewLayout {
@@ -137,6 +137,27 @@ class SearchResultViewController: BaseViewController {
             }
         }
     }
+    
+    func fetchSearchResultsWithURLSession() {
+            guard !isFetching && !isEnd else { return }
+            isFetching = true
+            
+            MeaningOutAPI.shared.fetchSearchResults(query: searchTerm, page: currentPage) { result in
+                DispatchQueue.main.async {
+                    self.isFetching = false
+                    switch result {
+                    case .success(let data):
+                        self.searchResults.append(contentsOf: data.items)
+                        self.isEnd = data.items.isEmpty
+                        self.totalResults = data.total
+                        self.resultsCountLabel.text = "총 \(self.totalResults)개의 결과"
+                        self.collectionView.reloadData()
+                    case .failure(let error):
+                        print("Error fetching search results: \(error)")
+                    }
+                }
+            }
+        }
     
     @objc func sortByAccuracy() {
         resetButtonColors()
