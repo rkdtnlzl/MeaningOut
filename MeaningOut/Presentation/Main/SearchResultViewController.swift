@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import Alamofire
 
 class SearchResultViewController: BaseViewController {
     
@@ -17,12 +16,16 @@ class SearchResultViewController: BaseViewController {
     var currentPage = 1
     var isFetching = false
     var isEnd = false
+    var total: Double = 0.0
+    var buffer: Data?
+    
     let resultsCountLabel = UILabel()
     let sortStackView = UIStackView()
     let sortAccuracyButton = UIButton()
     let sortDateButton = UIButton()
     let sortPriceHighButton = UIButton()
     let sortPriceLowButton = UIButton()
+    let progressView = UIProgressView(progressViewStyle: .default)
     
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
@@ -36,6 +39,7 @@ class SearchResultViewController: BaseViewController {
         
         configureNavigation()
         configureCollectionView()
+        configureProgressView()
         fetchSearchResultsWithURLSession()
     }
     
@@ -56,6 +60,7 @@ class SearchResultViewController: BaseViewController {
         view.addSubview(resultsCountLabel)
         view.addSubview(sortStackView)
         view.addSubview(collectionView)
+        view.addSubview(progressView)
         
         sortStackView.addArrangedSubview(sortAccuracyButton)
         sortStackView.addArrangedSubview(sortDateButton)
@@ -94,6 +99,12 @@ class SearchResultViewController: BaseViewController {
         button.layer.borderColor = UIColor.darkGray.cgColor
     }
     
+    func configureProgressView() {
+        progressView.progress = 0.0
+        progressView.trackTintColor = .lightGray
+        progressView.tintColor = .blue
+    }
+    
     override func configureLayout() {
         resultsCountLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(10)
@@ -106,8 +117,14 @@ class SearchResultViewController: BaseViewController {
             make.height.equalTo(36)
         }
         
-        collectionView.snp.makeConstraints { make in
+        progressView.snp.makeConstraints { make in
             make.top.equalTo(sortStackView.snp.bottom).offset(10)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(15)
+            make.height.equalTo(4)
+        }
+        
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(progressView.snp.bottom).offset(10)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
             make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
@@ -119,64 +136,25 @@ class SearchResultViewController: BaseViewController {
         collectionView.register(SearchResultCollectionViewCell.self, forCellWithReuseIdentifier: "SearchResultCollectionViewCell")
     }
     
-    func fetchSearchResults() {
+    func fetchSearchResultsWithURLSession() {
         guard !isFetching && !isEnd else { return }
         isFetching = true
-        
-        MeaningOutAPI.shared.fetchSearchResults(query: searchTerm, page: currentPage) { result in
-            self.isFetching = false
-            switch result {
-            case .success(let data):
-                self.searchResults.append(contentsOf: data.items)
-                self.isEnd = data.items.isEmpty
-                self.totalResults = data.total
-                self.resultsCountLabel.text = "총 \(self.totalResults)개의 결과"
-                self.collectionView.reloadData()
-            case .failure(let error):
-                print("Error fetching search results: \(error)")
-            }
-        }
+        buffer = Data()
+        MeaningOutAPI.shared.fetchSearchResultsWithURLSession(query: searchTerm, page: currentPage, delegate: self)
     }
-    
-    func fetchSearchResultsWithURLSession() {
-            guard !isFetching && !isEnd else { return }
-            isFetching = true
-            
-            MeaningOutAPI.shared.fetchSearchResults(query: searchTerm, page: currentPage) { result in
-                DispatchQueue.main.async {
-                    self.isFetching = false
-                    switch result {
-                    case .success(let data):
-                        self.searchResults.append(contentsOf: data.items)
-                        self.isEnd = data.items.isEmpty
-                        self.totalResults = data.total
-                        self.resultsCountLabel.text = "총 \(self.totalResults)개의 결과"
-                        self.collectionView.reloadData()
-                    case .failure(let error):
-                        print("Error fetching search results: \(error)")
-                    }
-                }
-            }
-        }
     
     @objc func sortByAccuracy() {
         resetButtonColors()
         toggleButtonAppearance(button: sortAccuracyButton)
-        self.currentPage = 1
-        self.isFetching = false
-        self.isEnd = false
-        self.searchResults.removeAll()
-        fetchSearchResults()
+        resetSearch()
+        fetchSearchResultsWithURLSession()
     }
 
     @objc func sortByDate() {
         resetButtonColors()
         toggleButtonAppearance(button: sortDateButton)
-        self.currentPage = 1
-        self.isFetching = false
-        self.isEnd = false
-        self.searchResults.removeAll()
-        fetchSearchResults()
+        resetSearch()
+        fetchSearchResultsWithURLSession()
     }
     
     @objc func sortByPriceHigh() {
@@ -204,6 +182,28 @@ class SearchResultViewController: BaseViewController {
     func toggleButtonAppearance(button: UIButton) {
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .black
+    }
+    
+    func resetSearch() {
+        currentPage = 1
+        isEnd = false
+        searchResults.removeAll()
+        collectionView.reloadData()
+    }
+    
+    func processSearchResults(data: Data) {
+        do {
+            let searchResponse = try JSONDecoder().decode(SearchResponse.self, from: data)
+            self.searchResults.append(contentsOf: searchResponse.items)
+            self.isEnd = searchResponse.items.isEmpty
+            self.totalResults = searchResponse.total
+            DispatchQueue.main.async {
+                self.resultsCountLabel.text = "총 \(self.totalResults)개의 결과"
+                self.collectionView.reloadData()
+            }
+        } catch {
+            print("Error")
+        }
     }
 }
 
@@ -236,9 +236,43 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         let height = scrollView.frame.size.height
+        
         if offsetY > contentHeight - height {
-            currentPage += 1
-            fetchSearchResults()
+            if !isFetching && !isEnd {
+                currentPage += 1
+                fetchSearchResultsWithURLSession()
+            }
+        }
+    }
+}
+
+extension SearchResultViewController: URLSessionDataDelegate {
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive response: URLResponse, completionHandler: @escaping (URLSession.ResponseDisposition) -> Void) {
+        if let response = response as? HTTPURLResponse,
+           (200...299).contains(response.statusCode) {
+            if let contentLength = response.value(forHTTPHeaderField: "Content-Length") {
+                total = Double(contentLength) ?? 0.0
+            }
+            completionHandler(.allow)
+        } else {
+            completionHandler(.cancel)
+        }
+    }
+    
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+        buffer?.append(data)
+        let progress = Double(buffer?.count ?? 0) / total
+        progressView.setProgress(Float(progress), animated: true)
+    }
+    
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        isFetching = false
+        if let error = error {
+            print("Error")
+        } else {
+            if let data = buffer {
+                processSearchResults(data: data)
+            }
         }
     }
 }
