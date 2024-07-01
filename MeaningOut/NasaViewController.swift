@@ -93,7 +93,7 @@ extension NasaViewController: URLSessionDataDelegate {
 
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: (any Error)?) {
         
-        if let error = error {
+        if error != nil {
             progressLabel.text = "문제가 발생됨"
         } else {
             print("성공")
