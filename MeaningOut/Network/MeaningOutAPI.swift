@@ -27,46 +27,21 @@ class MeaningOutAPI {
             }
     }
     
-    func fetchSearchResultsWithURLSession(query: String, page: Int, completion: @escaping (Result<SearchResponse, Error>) -> Void) {
-            let baseURL = "https://api.meaningout.com/search"
-            var components = URLComponents(string: baseURL)!
-            components.queryItems = [
-                URLQueryItem(name: "query", value: query),
-                URLQueryItem(name: "display", value: "10"),
-                URLQueryItem(name: "start", value: "\(page)")
-            ]
-            
-            var request = URLRequest(url: components.url!)
-            request.httpMethod = "GET"
-            
-            let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: request) { data, response, error in
-                if let error = error {
-                    completion(.failure(error))
-                    return
-                }
-                
-                guard let httpResponse = response as? HTTPURLResponse,
-                      (200...299).contains(httpResponse.statusCode) else {
-                    let statusCodeError = NSError(domain: "", code: (response as? HTTPURLResponse)?.statusCode ?? -1, userInfo: [NSLocalizedDescriptionKey: "Invalid response"])
-                    completion(.failure(statusCodeError))
-                    return
-                }
-                
-                guard let data = data else {
-                    let dataError = NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "No data"])
-                    completion(.failure(dataError))
-                    return
-                }
-                
-                do {
-                    let searchResponse = try JSONDecoder().decode(SearchResponse.self, from: data)
-                    completion(.success(searchResponse))
-                } catch {
-                    completion(.failure(error))
-                }
-            }
-            
-            task.resume()
-        }
+    func fetchSearchResultsWithURLSession(query: String, page: Int, delegate: URLSessionDataDelegate) {
+        let request = TMDBRequest.meaningOutSearch
+        var components = URLComponents(string: request.endpoint)!
+        components.queryItems = [
+            URLQueryItem(name: "query", value: query),
+            URLQueryItem(name: "display", value: "10"),
+            URLQueryItem(name: "start", value: "\(page)")
+        ]
+        
+        var urlRequest = URLRequest(url: components.url!)
+        urlRequest.httpMethod = "GET"
+        urlRequest.allHTTPHeaderFields = request.headers.dictionary
+        
+        let session = URLSession(configuration: .default, delegate: delegate, delegateQueue: .main)
+        let task = session.dataTask(with: urlRequest)
+        task.resume()
+    }
 }
