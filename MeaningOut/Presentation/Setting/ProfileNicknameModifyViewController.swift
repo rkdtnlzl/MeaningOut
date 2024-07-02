@@ -8,14 +8,14 @@
 import UIKit
 import SnapKit
 
-class ProfileNicknameModifyViewController: BaseViewController {
+final class ProfileNicknameModifyViewController: BaseViewController {
     
-    let profileImageView = UIImageView()
-    let profileImageButton = UIButton()
-    let nicknameTextField = UITextField()
-    let nicknameTextFieldLine = UIView()
-    let nicknameStatusLabel = UILabel()
-    var saveButton: UIBarButtonItem!
+    private let profileImageView = UIImageView()
+    private let profileImageButton = UIButton()
+    private let nicknameTextField = UITextField()
+    private let nicknameTextFieldLine = UIView()
+    private let nicknameStatusLabel = UILabel()
+    private var saveButton: UIBarButtonItem!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

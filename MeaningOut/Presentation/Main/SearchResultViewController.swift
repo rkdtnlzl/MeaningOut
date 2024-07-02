@@ -8,24 +8,24 @@
 import UIKit
 import SnapKit
 
-class SearchResultViewController: BaseViewController {
+final class SearchResultViewController: BaseViewController {
     
     var searchTerm: String = ""
     var searchResults: [SearchResult] = []
     var totalResults: Int = 0
-    var currentPage = 1
-    var isFetching = false
-    var isEnd = false
-    var total: Double = 0.0
-    var buffer: Data?
+    private var currentPage = 1
+    private var isFetching = false
+    private var isEnd = false
+    private var total: Double = 0.0
+    private var buffer: Data?
     
-    let resultsCountLabel = UILabel()
-    let sortStackView = UIStackView()
-    let sortAccuracyButton = UIButton()
-    let sortDateButton = UIButton()
-    let sortPriceHighButton = UIButton()
-    let sortPriceLowButton = UIButton()
-    let progressView = UIProgressView(progressViewStyle: .default)
+    private let resultsCountLabel = UILabel()
+    private let sortStackView = UIStackView()
+    private let sortAccuracyButton = UIButton()
+    private let sortDateButton = UIButton()
+    private let sortPriceHighButton = UIButton()
+    private let sortPriceLowButton = UIButton()
+    private let progressView = UIProgressView(progressViewStyle: .default)
     
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())

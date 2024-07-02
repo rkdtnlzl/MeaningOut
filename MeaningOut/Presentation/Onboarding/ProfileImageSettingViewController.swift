@@ -7,11 +7,11 @@
 
 import UIKit
 
-class ProfileImageSettingViewController: BaseViewController, UICollectionViewDelegateFlowLayout {
+final class ProfileImageSettingViewController: BaseViewController, UICollectionViewDelegateFlowLayout {
     
-    let profileImageView = UIImageView()
+    private let profileImageView = UIImageView()
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
-    let imageNames = (0...11).map { "profile_\($0)" }
+    private let imageNames = (0...11).map { "profile_\($0)" }
     var selectedIndexPath: IndexPath?
     var selectedImage: UIImage?
     

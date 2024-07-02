@@ -11,11 +11,11 @@ import SnapKit
 import UIKit
 import SnapKit
 
-class SettingViewController: BaseViewController {
+final class SettingViewController: BaseViewController {
     
-    let tableView = UITableView()
+    private let tableView = UITableView()
     
-    let list = ["나의 장바구니 목록", "자주 묻는 질문", "1:1 문의", "알림 설정", "탈퇴하기"]
+    private let list = ["나의 장바구니 목록", "자주 묻는 질문", "1:1 문의", "알림 설정", "탈퇴하기"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

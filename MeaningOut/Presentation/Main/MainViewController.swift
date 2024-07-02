@@ -8,15 +8,15 @@
 import UIKit
 import CoreData
 
-class MainViewController: BaseViewController {
+final class MainViewController: BaseViewController {
     
-    let searchBar = UISearchBar()
-    let searchTableView = UITableView()
-    let noSearchImageView = UIImageView()
-    let noSearchLabel = UILabel()
-    let headerView = UIView()
-    let headerLabel = UILabel()
-    let clearAllButton = UIButton()
+    private let searchBar = UISearchBar()
+    private let searchTableView = UITableView()
+    private let noSearchImageView = UIImageView()
+    private let noSearchLabel = UILabel()
+    private let headerView = UIView()
+    private let headerLabel = UILabel()
+    private let clearAllButton = UIButton()
     
     var recentSearches: [Entity] = []
     var context: NSManagedObjectContext?
