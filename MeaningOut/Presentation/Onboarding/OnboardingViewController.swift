@@ -9,9 +9,9 @@ import UIKit
 import SnapKit
 
 final class OnboardingViewController: BaseViewController {
-    let onboardingTitleLabel = UILabel()
-    let onboardingTitleImageView = UIImageView()
-    let startButton = UIButton()
+    private let onboardingTitleLabel = UILabel()
+    private let onboardingTitleImageView = UIImageView()
+    private let startButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()

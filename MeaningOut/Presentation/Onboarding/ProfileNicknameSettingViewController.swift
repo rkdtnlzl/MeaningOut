@@ -8,13 +8,13 @@
 import UIKit
 import SnapKit
 
-class ProfileNicknameSettingViewController: BaseViewController {
-    let profileImageView = UIImageView()
-    let profileImageButton = UIButton()
-    let nicknameTextField = UITextField()
-    let nicknameTextFieldLine = UIView()
-    let nicknameStatusLabel = UILabel()
-    let completeButton = UIButton()
+final class ProfileNicknameSettingViewController: BaseViewController {
+    private let profileImageView = UIImageView()
+    private let profileImageButton = UIButton()
+    private let nicknameTextField = UITextField()
+    private let nicknameTextFieldLine = UIView()
+    private let nicknameStatusLabel = UILabel()
+    private let completeButton = UIButton()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

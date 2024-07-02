@@ -9,11 +9,11 @@ import UIKit
 import WebKit
 import SnapKit
 
-class SearchResultDetailViewController: BaseViewController {
+final class SearchResultDetailViewController: BaseViewController {
     
     var urlString: String?
-    let webView = WKWebView()
-    var likedButton: UIBarButtonItem!
+    private let webView = WKWebView()
+    private var likedButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
