@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import RealmSwift
 
 class SearchResultCollectionViewCell: UICollectionViewCell {
     
@@ -107,5 +108,20 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
         }
         
         UserDefaults.standard.set(selectedCount, forKey: "selectedCount")
+        
+        let realm = try! Realm()
+        
+        if likeButton.isSelected {
+            let itemTable = ItemTable(title: item.title, price: item.lprice, imageUrl: item.image, mallName: item.mallName)
+            try! realm.write {
+                realm.add(itemTable)
+            }
+        } else {
+            if let itemToDelete = realm.objects(ItemTable.self).filter("title == %@", item.title).first {
+                try! realm.write {
+                    realm.delete(itemToDelete)
+                }
+            }
+        }
     }
 }
