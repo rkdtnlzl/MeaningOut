@@ -52,6 +52,8 @@
 		01FF36D32C3ABF3E004F5F3A /* ItemTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF36D22C3ABF3E004F5F3A /* ItemTable.swift */; };
 		01FF36D62C3AC12F004F5F3A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 01FF36D52C3AC12F004F5F3A /* RealmSwift */; };
 		01FF36D82C3AC319004F5F3A /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF36D72C3AC319004F5F3A /* FavoriteTableViewCell.swift */; };
+		01FF36ED2C3D6AC3004F5F3A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF36EC2C3D6AC3004F5F3A /* Observable.swift */; };
+		01FF36F12C3D6B40004F5F3A /* ProfileNicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF36F02C3D6B40004F5F3A /* ProfileNicknameViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +100,8 @@
 		01FF36CF2C3ABE81004F5F3A /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		01FF36D22C3ABF3E004F5F3A /* ItemTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTable.swift; sourceTree = "<group>"; };
 		01FF36D72C3AC319004F5F3A /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		01FF36EC2C3D6AC3004F5F3A /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		01FF36F02C3D6B40004F5F3A /* ProfileNicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNicknameViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,11 +212,8 @@
 		017180272C202282003F060E /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				017180282C202299003F060E /* SettingViewController.swift */,
-				0171802A2C208690003F060E /* ProfileCell.swift */,
-				01FC70EE2C2175FF00BC4326 /* MyLikedCell.swift */,
-				01FC70F02C217F7300BC4326 /* ProfileNicknameModifyViewController.swift */,
-				01FC70F22C21801600BC4326 /* ProfileImageModifyViewController.swift */,
+				01FF36EF2C3D6B1D004F5F3A /* View */,
+				01FF36EE2C3D6B0F004F5F3A /* ViewModel */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -236,6 +237,7 @@
 				01C362642C2E7D8300D8ED61 /* Enum */,
 				01C362442C2B040000D8ED61 /* Base */,
 				016B9D062C1B2A69009D2996 /* Extension */,
+				01FF36EC2C3D6AC3004F5F3A /* Observable.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -282,6 +284,26 @@
 				01FF36D22C3ABF3E004F5F3A /* ItemTable.swift */,
 			);
 			path = Realm;
+			sourceTree = "<group>";
+		};
+		01FF36EE2C3D6B0F004F5F3A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				01FF36F02C3D6B40004F5F3A /* ProfileNicknameViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		01FF36EF2C3D6B1D004F5F3A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				017180282C202299003F060E /* SettingViewController.swift */,
+				0171802A2C208690003F060E /* ProfileCell.swift */,
+				01FC70EE2C2175FF00BC4326 /* MyLikedCell.swift */,
+				01FC70F02C217F7300BC4326 /* ProfileNicknameModifyViewController.swift */,
+				01FC70F22C21801600BC4326 /* ProfileImageModifyViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,6 +402,7 @@
 				0171802B2C208690003F060E /* ProfileCell.swift in Sources */,
 				01FF36D02C3ABE81004F5F3A /* FavoritesViewController.swift in Sources */,
 				016B9CE42C1B1E27009D2996 /* AppDelegate.swift in Sources */,
+				01FF36ED2C3D6AC3004F5F3A /* Observable.swift in Sources */,
 				01C362682C2E7DBF00D8ED61 /* String+.swift in Sources */,
 				016B9D052C1B2A07009D2996 /* UIColor+HexCode.swift in Sources */,
 				01FC70EF2C2175FF00BC4326 /* MyLikedCell.swift in Sources */,
@@ -402,6 +425,7 @@
 				01C362802C32CA1D00D8ED61 /* NasaViewController.swift in Sources */,
 				01FF36D32C3ABF3E004F5F3A /* ItemTable.swift in Sources */,
 				016B9D0A2C1B2E85009D2996 /* ProfileNicknameSettingViewController.swift in Sources */,
+				01FF36F12C3D6B40004F5F3A /* ProfileNicknameViewModel.swift in Sources */,
 				01717FF52C1F2C05003F060E /* APIKey.swift in Sources */,
 				01FC70F32C21801600BC4326 /* ProfileImageModifyViewController.swift in Sources */,
 				01C362662C2E7D9700D8ED61 /* NicknameValidationResult.swift in Sources */,
