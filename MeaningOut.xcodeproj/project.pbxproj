@@ -147,7 +147,6 @@
 				016B9CF12C1B1E29009D2996 /* Info.plist */,
 				01717FF42C1F2C05003F060E /* APIKey.swift */,
 				01FC70EC2C21601C00BC4326 /* UserDefaultsKey.swift */,
-				017180252C2021ED003F060E /* TabBarViewController.swift */,
 				01C3627F2C32CA1D00D8ED61 /* NasaViewController.swift */,
 				01C362812C32CA5200D8ED61 /* Nasa.swift */,
 			);
@@ -221,6 +220,7 @@
 		01C361D12C2829EA00D8ED61 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				017180252C2021ED003F060E /* TabBarViewController.swift */,
 				01717FE02C1D7831003F060E /* Onboarding */,
 				01717FE12C1D784A003F060E /* Main */,
 				01FF36CE2C3ABE5B004F5F3A /* Favorites */,
