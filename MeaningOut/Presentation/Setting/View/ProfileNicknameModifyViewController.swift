@@ -17,6 +17,8 @@ final class ProfileNicknameModifyViewController: BaseViewController {
     private let nicknameStatusLabel = UILabel()
     private var saveButton: UIBarButtonItem!
     
+    let viewModel = ProfileNicknameViewModel()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -29,6 +31,18 @@ final class ProfileNicknameModifyViewController: BaseViewController {
         
         configureNavigation()
         setTarget()
+        bindData()
+    }
+    
+    func bindData() {
+        viewModel.outputValidationText.bind { value in
+            self.nicknameStatusLabel.text = value
+        }
+        viewModel.outputValid.bind { value in
+            self.nicknameStatusLabel.textColor = value ? Colors.orange : .red
+            self.saveButton.tintColor = value ? Colors.orange : .gray
+            self.saveButton.isEnabled = value
+        }
     }
     
     func configureNavigation() {
@@ -108,26 +122,7 @@ final class ProfileNicknameModifyViewController: BaseViewController {
     }
     
     @objc func nicknameTextFieldDidChange(_ textField: UITextField) {
-        guard let text = textField.text else { return }
-        let specialLiterals = CharacterSet(charactersIn: "@#$%")
-        let numbers = CharacterSet.decimalDigits
-        if text.count < 2 || text.count > 9 {
-            nicknameStatusLabel.text = StringLiterals.LabelText.NickNameStatus.numberCase
-            saveButton.isEnabled = false
-            saveButton.tintColor = .gray
-        } else if text.rangeOfCharacter(from: specialLiterals) != nil {
-            nicknameStatusLabel.text = StringLiterals.LabelText.NickNameStatus.specialLiteralsCase
-            saveButton.isEnabled = false
-            saveButton.tintColor = .gray
-        } else if text.rangeOfCharacter(from: numbers) != nil {
-            nicknameStatusLabel.text = StringLiterals.LabelText.NickNameStatus.numberOfLiteralsCase
-            saveButton.isEnabled = false
-            saveButton.tintColor = .gray
-        } else {
-            nicknameStatusLabel.text = StringLiterals.LabelText.NickNameStatus.rightCase
-            saveButton.isEnabled = true
-            saveButton.tintColor = Colors.orange
-        }
+        viewModel.inputNickname.value = textField.text
     }
     
     @objc func profileImageButtonClicked() {
